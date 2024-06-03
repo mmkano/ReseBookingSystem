@@ -1,0 +1,269 @@
+main{
+    height: 83vh;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.rese__content{
+    max-width: 1230px;
+    margin: 0 auto;
+    gap: 50px;
+}
+
+.rese-sub{
+    display: flex;
+}
+
+.shop-ttl{
+    display: flex;
+}
+
+.shop-info {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.shop-info img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.shop-info button.back-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.reservation {
+    flex: 1;
+    background-color: #305dff;
+    color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: -40px;
+}
+
+.one{
+    padding: 30px;
+    padding-bottom: 0;
+}
+
+.reservation h2 {
+    margin-top: 0;
+}
+
+.reservation input, .reservation select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 4px;
+}
+
+#date{
+    width: 30%;
+}
+
+#time{
+    width: 93%;
+}
+
+#number{
+    width: 93%;
+}
+
+.reservation-summary {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    width: 90%;
+}
+
+.reservation-summary p {
+    margin: 5px 0;
+}
+
+.reservation button {
+    margin-left: -29.5px;
+    width: 111%;
+    padding: 15px;
+    background-color: #004494;
+    color: #fff;
+    border: none;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    cursor: pointer;
+    margin-top: 60%;
+}
+
+.reservation button:hover {
+    background-color: #004494;
+}
+
+.reviews-info{
+    margin: 50px 0;
+}
+
+.reservation-form,
+.reviews,
+.review-list {
+    margin-bottom: 30px;
+}
+
+.reviews{
+    display: flex;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.review {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.review:last-child {
+    border-bottom: none;
+}
+
+.modal .form-group {
+    margin-bottom: 20px;
+}
+
+.modal .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.modal .form-group select,
+.modal .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #305dff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    margin: 0 20px;
+}
+
+.btn-primary {
+    background-color: #305dff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.error{
+    margin: -10px 0 10px;
+    font-size: 15px;
+    color: red;
+}
+
+.back-btn{
+    background: white;
+    height: 30px;
+    border-radius: 5px;
+    padding: 0 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    margin-right: 10px;
+    color: #305dff;
+    text-decoration: none;
+    padding-top: 2px;
+}
+
+.back-btn:hover{
+    text-decoration: none;
+}
+
+
+
+@media (max-width: 768px) {
+    .rese__content {
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .rese-sub {
+        flex-direction: column;
+    }
+
+    .shop-info,
+    .reservation {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .shop-info img {
+        width: 100%;
+        height: auto;
+    }
+
+    .reservation {
+        margin-top: 0;
+    }
+
+    .reservation-summary {
+        width: 100%;
+    }
+
+    .favorite-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .favorite-card {
+        width: 90%;
+        max-width: 100%;
+    }
+
+    .reviews h2{
+        font-size: 1.3rem;
+        margin: 0;
+        margin-top: 5px;
+    }
+
+    #date{
+        font-size: 15px;
+    }
+}
