@@ -7,9 +7,10 @@ use App\Models\Shop;
 
 class ShopController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $area = $request->input('area', 'all');
+        $genre = $request->input('genre', 'all');
 
         $query = Shop::query();
 
@@ -17,9 +18,14 @@ class ShopController extends Controller
             $query->where('location', $area);
         }
 
+        if ($genre !== 'all') {
+            $query->where('genre', $genre);
+        }
+
         $shops = $query->get();
         $areas = Shop::select('location')->distinct()->get();
+        $genres = Shop::select('genre')->distinct()->get();
 
-        return view('shop_list', compact('shops', 'areas'));
+        return view('shop_list', compact('shops', 'areas', 'genres'));
     }
 }
