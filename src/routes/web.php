@@ -26,3 +26,5 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('/login', 'login');
     Route::post('/logout', 'logout')->name('logout');
 });
+
+Route::get('/mypage', [UserController::class, 'mypage'])->name('mypage');
