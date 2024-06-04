@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Shop;
+use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
@@ -104,5 +105,38 @@ class ShopController extends Controller
     }
 
     return $times;
+    }
+
+    public function store(Request $request)
+    {
+    $data = $request->all();
+    session([
+        'shop_id' => $data['shop_id'],
+        'date' => $data['date'],
+        'time' => $data['time'],
+        'number' => $data['number'],
+    ]);
+
+    return redirect()->route('shop_detail', ['id' => $data['shop_id']]);
+    }
+
+    public function reserve(Request $request)
+    {
+    $request->validate([
+        'shop_id' => 'required|exists:shops,id',
+        'date' => 'required|date',
+        'time' => 'required',
+        'number' => 'required|integer',
+    ]);
+
+    Reservation::create([
+        'shop_id' => $request->shop_id,
+        'user_id' => Auth::id(),
+        'date' => $request->date,
+        'time' => $request->time,
+        'number' => $request->number,
+    ]);
+
+    return redirect()->route('shop_detail', ['id' => $request->shop_id])->with('success', '予約が完了しました。');
     }
 }
