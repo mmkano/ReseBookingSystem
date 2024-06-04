@@ -16,5 +16,14 @@ class ReservationController extends Controller
         $reservation->save();
 
         return redirect()->route('done');
-        }
+    }
+
+    public function destroy($id)
+    {
+    $reservation = Reservation::findOrFail($id);
+    $reservation->delete();
+
+    return redirect()->route('mypage')->with('status', 'Reservation deleted successfully.');
+    }
+
 }
