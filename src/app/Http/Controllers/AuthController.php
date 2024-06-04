@@ -22,4 +22,8 @@ class AuthController extends Controller
 
         return redirect()->route('thanks');
     }
+
+    public function showThanksPage(){
+        return view('thanks');
+    }
 }
