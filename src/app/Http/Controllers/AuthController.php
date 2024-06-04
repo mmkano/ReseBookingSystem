@@ -50,4 +50,14 @@ class AuthController extends Controller
 
         return back()->withErrors(['email' => '提供された認証情報が記録と一致しません。']);
     }
+
+    public function logout(Request $request){
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/login');
+    }
 }

@@ -24,4 +24,5 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('/thanks', 'showThanksPage')->name('thanks');
     Route::get('/login', 'showLoginForm')->name('login');
     Route::post('/login', 'login');
+    Route::post('/logout', 'logout')->name('logout');
 });
