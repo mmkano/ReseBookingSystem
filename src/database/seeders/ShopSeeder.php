@@ -156,5 +156,9 @@ class ShopSeeder extends Seeder
                 'image_url' => 'https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg',
             ],
         ];
+
+        foreach ($shops as $shop) {
+            Shop::create($shop);
+        }
     }
 }
