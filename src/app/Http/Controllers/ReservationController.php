@@ -3,9 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Shop;
+use App\Models\Reservation;
+use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
 {
+
+    public function showDonePage(){
+        return view('done');
+    }
+
     public function store(ReservationRequest $request){
         $reservation = new Reservation();
         $reservation->shop_id = $request->input('shop_id');
