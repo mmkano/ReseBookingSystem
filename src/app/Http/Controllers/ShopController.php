@@ -11,6 +11,7 @@ class ShopController extends Controller
     {
         $area = $request->input('area', 'all');
         $genre = $request->input('genre', 'all');
+        $search = $request->input('search', '');
 
         $query = Shop::query();
 
@@ -22,10 +23,14 @@ class ShopController extends Controller
             $query->where('genre', $genre);
         }
 
+        if (!empty($search)) {
+            $query->where('name', 'like', '%' . $search . '%');
+        }
+
         $shops = $query->get();
         $areas = Shop::select('location')->distinct()->get();
         $genres = Shop::select('genre')->distinct()->get();
 
-        return view('shop_list', compact('shops', 'areas', 'genres'));
+        return view('shop_list', compact('shops', 'areas', 'genres', 'search'));
     }
 }
