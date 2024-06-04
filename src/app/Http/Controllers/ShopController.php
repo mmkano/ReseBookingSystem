@@ -59,4 +59,28 @@ class ShopController extends Controller
 
         return redirect()->back();
     }
+
+    public function unfavoriteAjax($id)
+    {
+        if (!Auth::check()) {
+            return response()->json(['status' => 'unauthenticated'], 401);
+        }
+
+        $shop = Shop::findOrFail($id);
+        Auth::user()->favorites()->detach($shop->id);
+
+        return response()->json(['status' => 'unliked']);
+    }
+
+    public function unfavorite($id)
+    {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+
+        $shop = Shop::findOrFail($id);
+        Auth::user()->favorites()->detach($shop->id);
+
+        return redirect()->back();
+    }
 }

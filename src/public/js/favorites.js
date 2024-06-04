@@ -31,6 +31,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     button.classList.add('liked');
                     button.querySelector('i').classList.remove('far');
                     button.querySelector('i').classList.add('fas');
+                } else if (data.status === 'unliked') {
+                    button.classList.remove('liked');
+                    button.querySelector('i').classList.remove('fas');
+                    button.querySelector('i').classList.add('far');
                 }
             })
             .catch(error => {
