@@ -10,7 +10,8 @@ class UserController extends Controller
     public function mypage()
     {
         $user = Auth::user();
+        $favorites = $user->favorites;
 
-        return view('mypage', compact('user'));
+        return view('mypage', compact('user', 'favorites'));
     }
 }
