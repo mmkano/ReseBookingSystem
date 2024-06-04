@@ -38,4 +38,5 @@ Route::controller(ShopController::class)->group(function () {
     Route::post('/favorite-ajax/{id}', 'favoriteAjax')->name('favorite.ajax');
     Route::post('/unfavorite/{id}', 'unfavorite')->name('unfavorite');
     Route::post('/unfavorite-ajax/{id}', 'unfavoriteAjax')->name('unfavorite.ajax');
+    Route::get('/shop_detail/{id}', 'show')->name('shop_detail');
 });

@@ -83,4 +83,26 @@ class ShopController extends Controller
 
         return redirect()->back();
     }
+
+    public function show($id)
+    {
+    $shop = Shop::with('reviews.user')->findOrFail($id);
+    $times = $this->generateTimeSlots();
+
+    return view('shop_detail', compact('shop', 'times'));
+    }
+
+    private function generateTimeSlots()
+    {
+    $times = [];
+    $start = strtotime('00:00');
+    $end = strtotime('23:30');
+
+    while ($start <= $end) {
+        $times[] = date('H:i', $start);
+        $start = strtotime('+30 minutes', $start);
+    }
+
+    return $times;
+    }
 }
