@@ -14,4 +14,14 @@ class Shop extends Model
     protected $fillable = [
         'name', 'location', 'genre', 'description', 'image_url',
     ];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'favorites', 'shop_id', 'user_id');
+    }
+
+    public function favoritedBy()
+    {
+        return $this->belongsToMany(User::class, 'favorites');
+    }
 }
