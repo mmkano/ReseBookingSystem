@@ -9,7 +9,17 @@ class ShopController extends Controller
 {
     public function index()
     {
-        $shops = Shop::all();
-        return view('shop_list', compact('shops'));
+        $area = $request->input('area', 'all');
+
+        $query = Shop::query();
+
+        if ($area !== 'all') {
+            $query->where('location', $area);
+        }
+
+        $shops = $query->get();
+        $areas = Shop::select('location')->distinct()->get();
+
+        return view('shop_list', compact('shops', 'areas'));
     }
 }
