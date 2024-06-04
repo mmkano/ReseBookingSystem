@@ -34,4 +34,6 @@ Route::get('/mypage', [UserController::class, 'mypage'])->name('mypage');
 Route::controller(ShopController::class)->group(function () {
     Route::get('/', 'index')->name('shop_list');
     Route::post('/', 'index')->name('shop_list');
+    Route::post('/favorite/{id}', 'favorite')->name('favorite');
+    Route::post('/favorite-ajax/{id}', 'favoriteAjax')->name('favorite.ajax');
 });
