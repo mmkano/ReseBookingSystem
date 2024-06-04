@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ShopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +30,8 @@ Route::controller(AuthController::class)->group(function () {
 });
 
 Route::get('/mypage', [UserController::class, 'mypage'])->name('mypage');
+
+Route::controller(ShopController::class)->group(function () {
+    Route::get('/shop_list', 'index')->name('shop_list');
+    Route::post('/shop_list', 'index')->name('shop_list');
+});
