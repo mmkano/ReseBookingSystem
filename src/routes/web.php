@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\ReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,4 +40,8 @@ Route::controller(ShopController::class)->group(function () {
     Route::post('/unfavorite/{id}', 'unfavorite')->name('unfavorite');
     Route::post('/unfavorite-ajax/{id}', 'unfavoriteAjax')->name('unfavorite.ajax');
     Route::get('/shop_detail/{id}', 'show')->name('shop_detail');
+});
+
+Route::controller(ReservationController::class)->group(function () {
+    Route::post('/reserve', 'store')->name('reserve');
 });
