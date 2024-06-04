@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
 {
+    public function create($id)
+    {
+        $shop = Shop::findOrFail($id);
+        $times = $this->generateTimeSlots();
+
+        return view('shop_detail', compact('shop', 'times'));
+    }
 
     public function showDonePage(){
         return view('done');
@@ -34,4 +41,47 @@ class ReservationController extends Controller
     return redirect()->route('mypage')->with('status', 'Reservation deleted successfully.');
     }
 
+    public function edit($id)
+    {
+        $reservation = Reservation::findOrFail($id);
+        $times = $this->generateTimeSlots();
+
+        return view('edit', compact('reservation', 'times'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'date' => 'required|date',
+            'time' => 'required',
+            'number' => 'required|integer',
+        ]);
+
+        $reservation = Reservation::findOrFail($id);
+        $reservation->date = $request->date;
+        $reservation->time = $request->time;
+        $reservation->number = $request->number;
+        $reservation->save();
+
+        return redirect()->route('reservation.edit_done')->with('status', '予約が更新されました');
+    }
+
+    private function generateTimeSlots()
+    {
+        $times = [];
+        $start = strtotime('00:00');
+        $end = strtotime('23:30');
+
+        while ($start <= $end) {
+            $times[] = date('H:i', $start);
+            $start = strtotime('+30 minutes', $start);
+        }
+
+        return $times;
+    }
+
+    public function showEditDonePage()
+    {
+        return view('reservation_edit_done');
+    }
 }

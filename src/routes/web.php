@@ -46,4 +46,7 @@ Route::controller(ReservationController::class)->group(function () {
     Route::post('/reserve', 'store')->name('reserve');
     Route::post('/reservation/delete/{id}', 'destroy')->name('reservation.destroy');
     Route::get('/done', 'showDonePage')->name('done');
+    Route::get('/reservation/edit/{id}', 'edit')->name('reservation.edit');
+    Route::put('/reservation/update/{id}', 'update')->name('reservation.update');
+    Route::get('/reservation/edit_done', 'showEditDonePage')->name('reservation.edit_done');
 });
