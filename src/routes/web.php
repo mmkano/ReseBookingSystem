@@ -45,4 +45,5 @@ Route::controller(ShopController::class)->group(function () {
 Route::controller(ReservationController::class)->group(function () {
     Route::post('/reserve', 'store')->name('reserve');
     Route::post('/reservation/delete/{id}', 'destroy')->name('reservation.destroy');
+    Route::get('/done', 'showDonePage')->name('done');
 });
