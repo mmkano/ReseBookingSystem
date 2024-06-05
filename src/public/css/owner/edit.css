@@ -1,0 +1,107 @@
+.edit-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 50px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.edit-container h1 {
+    font-size: 24px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.edit-container form div {
+    margin-bottom: 40px;
+}
+
+.edit-container label {
+    margin-top: -25px;
+    font-weight: bold;
+    position: absolute;
+}
+
+.edit-container input[type="text"],
+.edit-container input[type="url"],
+.edit-container textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#genre{
+    width: 100%;
+    height: 35px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.edit-container textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+.edit-container button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #69b792;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-container button:hover {
+    background-color: #ababab;
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        grid-template-columns: 1fr;
+    }
+
+    .special-margin {
+        margin-left: 0;
+    }
+
+    .dashboard-box {
+        width: 90%;
+        margin: 10px auto;
+    }
+
+    .edit-container {
+        padding: 20px;
+        width: 80%;
+        margin: 20px auto;
+    }
+
+    form{
+        margin: 30px;
+    }
+
+    .edit-container h1 {
+        font-size: 20px;
+    }
+
+    .edit-container label {
+        font-size: 14px;
+    }
+
+    .edit-container input[type="text"],
+    .edit-container input[type="url"],
+    .edit-container textarea {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .edit-container button {
+        padding: 8px;
+        font-size: 14px;
+    }
+}

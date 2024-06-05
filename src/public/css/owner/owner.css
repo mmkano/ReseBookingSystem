@@ -1,0 +1,156 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+.header {
+    display: flex;
+    padding: 20px;
+}
+
+.header__inner {
+    max-width: 1230px;
+    padding-left: 100px;
+    display: flex;
+}
+
+#drawer {
+    display: none;
+}
+label {
+    cursor: pointer;
+    position: fixed;
+}
+.open {
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    background: #69b792;
+    transition: background .6s, transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+    position: absolute;
+}
+.open::before,
+.open::after {
+    content: "";
+}
+.open span,
+.open::before,
+.open::after {
+    content: "";
+    position: absolute;
+    top: calc(50% - 1px);
+    left: 30%;
+    width: 20px;
+    border-bottom: 2px solid white;
+    transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.open::before {
+    transform: translateY(-8px);
+    width: 10px;
+}
+.open::after {
+    transform: translateY(8px);
+    width: 5px;
+}
+.close {
+    z-index: 1;
+    inset: 0;
+    pointer-events: none;
+    transition: background .6s;
+}
+#drawer:checked + .open {
+    background: #69b792;
+}
+#drawer:checked + .open span {
+    transform: scaleX(0);
+}
+#drawer:checked + .open::before {
+    transform: rotate(135deg) scaleX(1.2);
+    width: 40%;
+}
+#drawer:checked + .open::after {
+    transform: rotate(-135deg) scaleX(1.2);
+    width: 40%;
+}
+#drawer:checked ~ .close {
+    pointer-events: auto;
+    background: rgba(0,0,0,.3);
+}
+
+.menu {
+    z-index: 1;
+    position: fixed;
+    overflow: auto;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 10px;
+    box-sizing: border-box;
+    background:white;
+    transform: translateX(-100%);
+    transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    padding: 15% 0;
+}
+.menu li {
+    line-height: 1.4;
+}
+
+.menu a {
+    display: block;
+    padding: 10px;
+    color: #69b792;
+    text-decoration: inherit;
+    transition: background .6s;
+    font-size: 30px;
+}
+
+#drawer:checked ~ .menu {
+    transform: none;
+}
+
+.logout button{
+    border: none;
+    background: none;
+    color: #69b792;
+    font-size: 30px;
+    padding: 10px;
+}
+
+.logo{
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: bold;
+    color: #69b792;
+    padding-top: 7px;
+    padding-left: 50px;
+}
+
+@media (max-width: 768px) {
+    .header__inner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 10px;
+    }
+
+    .header .menu {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header .menu li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+}

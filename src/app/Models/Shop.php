@@ -8,11 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Shop extends Model
 {
     use HasFactory;
-
-    use HasFactory;
-
     protected $fillable = [
-        'name', 'location', 'genre', 'description', 'image_url',
+        'name', 'location', 'genre', 'description', 'image_url', 'owner_id',
     ];
 
     public function users()
@@ -28,5 +25,10 @@ class Shop extends Model
     public function reviews()
     {
     return $this->hasMany(Review::class);
+    }
+
+    public function owner()
+    {
+        return $this->belongsTo(Owner::class);
     }
 }

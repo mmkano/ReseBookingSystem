@@ -5,6 +5,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\OwnerAuthController;
+use App\Http\Controllers\OwnerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,3 +62,32 @@ Route::controller(ReviewController::class)->group(function () {
     Route::post('/review', 'store')->name('review.store');
     Route::get('/shop/{id}', 'show')->name('shop.show');
 });
+
+Route::prefix('admin')->group(function () {
+    Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
+    Route::post('/login', [AdminAuthController::class, 'login']);
+    Route::post('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+
+    Route::middleware('auth:admin')->group(function () {
+        Route::get('/owners/create', [AdminAuthController::class, 'showCreateOwnerForm'])->name('admin.owners.create');
+        Route::post('/owners', [AdminAuthController::class, 'storeOwner'])->name('admin.owners.store');
+        Route::get('/owners/done', [AdminAuthController::class, 'showOwnerCreationDonePage'])->name('admin.owners.done');
+    });
+});
+
+Route::prefix('owner')->group(function () {
+    Route::get('/login', [OwnerAuthController::class, 'showLoginForm'])->name('owner.login');
+    Route::post('/login', [OwnerAuthController::class, 'login']);
+    Route::post('/logout', [OwnerAuthController::class, 'logout'])->name('owner.logout');
+
+    Route::middleware('auth:owner')->group(function () {
+        Route::get('/dashboard', [OwnerController::class, 'dashboard'])->name('owner.dashboard');
+        Route::get('/shops/create', [OwnerController::class, 'create'])->name('owner.shops.create');
+        Route::post('/shops', [OwnerController::class, 'store'])->name('owner.shops.store');
+        Route::get('/shops/{shop}/edit', [OwnerController::class, 'edit'])->name('owner.shops.edit');
+        Route::put('/shops/{shop}', [OwnerController::class, 'update'])->name('owner.shops.update');
+        Route::get('/reservations', [OwnerController::class, 'reservations'])->name('owner.reservations.index');
+        Route::get('/reservations/{reservation}', [OwnerController::class, 'showReservation'])->name('owner.reservations.show');
+    });
+});
+
