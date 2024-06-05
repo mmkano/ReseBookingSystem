@@ -185,11 +185,51 @@ main{
 }
 
 .btn-primary {
-    background-color: #305dff;
+    background-color: #305dff !important;
 }
 
 .btn-primary:hover {
     background-color: #0056b3;
+}
+
+
+.star-rating {
+    display: flex;
+}
+
+.star-rating input[type="radio"] {
+    display: none;
+}
+
+.star-rating label {
+    font-size: 30px;
+    color: #ddd;
+    cursor: pointer;
+}
+
+.star-rating input[type="radio"]:checked ~ label {
+    color: #f5b301;
+}
+
+.star-rating input[type="radio"]:checked ~ label ~ label {
+    color: #ddd;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: #f5b301;
+}
+
+.star-rating label:hover ~ input ~ label {
+    color: #ddd;
+}
+
+.fa-star.checked {
+    color: #f5b301;
+}
+
+.fa-star {
+    color: #ddd;
 }
 
 .error{
@@ -204,11 +244,8 @@ main{
     border-radius: 5px;
     padding: 0 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 30px;
+    margin-top: 10px;
     margin-right: 10px;
-    color: #305dff;
-    text-decoration: none;
-    padding-top: 2px;
 }
 
 .back-btn:hover{

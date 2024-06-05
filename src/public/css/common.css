@@ -12,7 +12,7 @@ body {
 
 .header__inner {
     max-width: 1230px;
-    padding-left: 100px;
+    padding-left: 90px;
     display: flex;
 }
 
@@ -116,8 +116,20 @@ label {
     font-size: 30px;
 }
 
+.menu a:hover{
+    text-decoration: none;
+}
+
 #drawer:checked ~ .menu {
     transform: none;
+}
+
+.logout button{
+    border: none;
+    background: none;
+    color: #305dff;
+    font-size: 30px;
+    padding: 10px;
 }
 
 .logout button{
@@ -134,6 +146,10 @@ label {
     font-weight: bold;
     color: #305dff;
     padding-left: 50px;
+}
+
+.logo:hover{
+    text-decoration: none;
 }
 
 @media (max-width: 768px) {

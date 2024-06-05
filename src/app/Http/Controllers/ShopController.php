@@ -88,10 +88,12 @@ class ShopController extends Controller
 
     public function show($id)
     {
-    $shop = Shop::with('reviews.user')->findOrFail($id);
-    $times = $this->generateTimeSlots();
+        $shop = Shop::with('reviews.user')->findOrFail($id);
+        $times = $this->generateTimeSlots();
+        $reviews = $shop->reviews;
+        $averageRating = $reviews->avg('rating');
 
-    return view('shop_detail', compact('shop', 'times'));
+        return view('shop_detail', compact('shop', 'times', 'reviews', 'averageRating'));
     }
 
     private function generateTimeSlots()
