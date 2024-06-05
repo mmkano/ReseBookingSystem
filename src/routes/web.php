@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\OwnerAuthController;
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -97,3 +98,6 @@ Route::prefix('owner')->group(function () {
     });
 });
 
+Route::get('/payment/{reservation_id}', [PaymentController::class, 'showPaymentForm'])->name('payment.form');
+Route::post('/payment/process', [PaymentController::class, 'processPayment'])->name('payment.process');
+Route::get('/payment/confirm', [PaymentController::class, 'confirmPayment'])->name('payment.confirm');

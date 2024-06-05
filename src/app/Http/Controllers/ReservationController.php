@@ -31,6 +31,10 @@ class ReservationController extends Controller
         $reservation->number = $request->input('number');
         $reservation->save();
 
+        if ($request->input('payment_method') == 'card') {
+            return redirect()->route('payment.form', ['reservation_id' => $reservation->id]);
+        }
+
         return redirect()->route('done');
     }
 
