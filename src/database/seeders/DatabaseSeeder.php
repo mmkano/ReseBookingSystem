@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             ReservationSeeder::class,
             ReviewSeeder::class,
+            AdminSeeder::class,
         ]);
     }
 }
