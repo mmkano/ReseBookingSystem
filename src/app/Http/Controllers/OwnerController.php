@@ -87,4 +87,22 @@ class OwnerController extends Controller
         return redirect()->route('owner.dashboard')->with('success', '店舗情報を更新しました。');
     }
 
+    public function reservations()
+    {
+        $owner = Auth::guard('owner')->user();
+        $shops = $owner->shops;
+        $reservations = Reservation::whereIn('shop_id', $shops->pluck('id'))->get();
+        $shop = $shops->first();
+
+        return view('owner.reservations.index', compact('reservations', 'shop'));
+    }
+
+    public function showReservation(Reservation $reservation)
+    {
+        $shop = $reservation->shop;
+
+        return view('owner.reservations.show', compact('reservation', 'shop'));
+    }
+
+
 }

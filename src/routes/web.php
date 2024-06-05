@@ -86,6 +86,8 @@ Route::prefix('owner')->group(function () {
         Route::post('/shops', [OwnerController::class, 'store'])->name('owner.shops.store');
         Route::get('/shops/{shop}/edit', [OwnerController::class, 'edit'])->name('owner.shops.edit');
         Route::put('/shops/{shop}', [OwnerController::class, 'update'])->name('owner.shops.update');
+        Route::get('/reservations', [OwnerController::class, 'reservations'])->name('owner.reservations.index');
+        Route::get('/reservations/{reservation}', [OwnerController::class, 'showReservation'])->name('owner.reservations.show');
     });
 });
 
