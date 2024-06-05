@@ -76,6 +76,10 @@ main{
     width: 93%;
 }
 
+#payment_method{
+    width: 93%;
+}
+
 .reservation-summary {
     background-color: rgba(255, 255, 255, 0.2);
     padding: 10px;

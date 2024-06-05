@@ -47,11 +47,19 @@
                         @error('number')
                             <div class="error">{{ $message }}</div>
                         @enderror
+                        <select id="payment_method" name="payment_method" onchange="updatePaymentMethod()">
+                            <option value="onsite" {{ old('payment_method') == 'onsite' ? 'selected' : '' }}>現地決済</option>
+                            <option value="card" {{ old('payment_method') == 'card' ? 'selected' : '' }}>カード決済</option>
+                        </select>
+                        @error('payment_method')
+                            <div class="error">{{ $message }}</div>
+                        @enderror
                         <div class="reservation-summary">
                             <p>Shop: {{ $shop->name }}</p>
                             <p>Date: <span id="selected-date">{{ old('date') }}</span></p>
                             <p>Time: <span id="selected-time">{{ old('time') }}</span></p>
                             <p>Number: <span id="selected-number">{{ old('number') }}</span></p>
+                            <p>Payment: <span id="selected-payment_method">{{ old('payment_method') }}</span></p>
                         </div>
                         <button type="submit">予約する</button>
                     </form>
@@ -192,10 +200,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const dateInput = document.getElementById('date');
     const timeSelect = document.getElementById('time');
     const numberSelect = document.getElementById('number');
+    const paymentMethodSelect = document.getElementById('payment_method');
 
     const selectedDate = document.getElementById('selected-date');
     const selectedTime = document.getElementById('selected-time');
     const selectedNumber = document.getElementById('selected-number');
+    const selectedPaymentMethod = document.getElementById('selected-payment_method');
 
     dateInput.addEventListener('change', () => {
         selectedDate.textContent = dateInput.value;
@@ -207,6 +217,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     numberSelect.addEventListener('change', () => {
         selectedNumber.textContent = numberSelect.value + '人';
+    });
+
+    paymentMethodSelect.addEventListener('change', () => {
+        selectedPaymentMethod.textContent = paymentMethodSelect.options[paymentMethodSelect.selectedIndex].text;
     });
 });
 </script>
