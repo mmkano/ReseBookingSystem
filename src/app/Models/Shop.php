@@ -24,4 +24,9 @@ class Shop extends Model
     {
         return $this->belongsToMany(User::class, 'favorites');
     }
+
+    public function reviews()
+    {
+    return $this->hasMany(Review::class);
+    }
 }
