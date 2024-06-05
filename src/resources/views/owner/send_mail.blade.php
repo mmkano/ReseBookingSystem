@@ -3,11 +3,11 @@
 @section('title', 'メール送信')
 
 @section('styles')
-    <link rel="stylesheet" href="{{ asset('css/owner/edit.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owner/mail.css') }}">
 @endsection
 
 @section('content')
-<div class="edit-container">
+<div class="mail-container">
     <h1>お知らせメールの送信</h1>
     <form action="{{ route('owner.send_mail.post') }}" method="POST">
         @csrf
