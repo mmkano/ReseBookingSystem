@@ -69,6 +69,7 @@ Route::prefix('admin')->group(function () {
     Route::middleware('auth:admin')->group(function () {
         Route::get('/owners/create', [AdminAuthController::class, 'showCreateOwnerForm'])->name('admin.owners.create');
         Route::post('/owners', [AdminAuthController::class, 'storeOwner'])->name('admin.owners.store');
+        Route::get('/owners/done', [AdminAuthController::class, 'showOwnerCreationDonePage'])->name('admin.owners.done');
     });
 });
 
