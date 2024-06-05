@@ -1,0 +1,51 @@
+.container {
+    max-width: 1230px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.detail-table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+.detail-table th, .detail-table td {
+    border-bottom: 2px solid #c1c7c6;
+    padding: 1em;
+}
+.detail-table th {
+    border-bottom: 2px solid #69b792;
+    font-weight: bold;
+    text-align: left;
+    width: 30%;
+    min-width: 4em;
+}
+.container {
+    padding: 60px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .detail-table {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .detail-table th, .detail-table td {
+        padding: 10px;
+    }
+}
