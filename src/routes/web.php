@@ -8,6 +8,7 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\OwnerAuthController;
 use App\Http\Controllers\OwnerController;
+use App\Http\Controllers\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,6 +92,8 @@ Route::prefix('owner')->group(function () {
         Route::get('/reservations/{reservation}', [OwnerController::class, 'showReservation'])->name('owner.reservations.show');
         Route::get('/owner/qr-scan', [OwnerController::class, 'showScanPage'])->name('owner.qr_scan');
         Route::post('/owner/scan', [OwnerController::class, 'scanQrCode'])->name('owner.scan.post');
+        Route::get('/send-mail', [MailController::class, 'showSendMailForm'])->name('owner.send_mail');
+        Route::post('/send-mail', [MailController::class, 'sendMail'])->name('owner.send_mail.post');
     });
 });
 
