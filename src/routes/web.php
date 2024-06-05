@@ -7,7 +7,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\OwnerAuthController;
-
+use App\Http\Controllers\OwnerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,5 +78,9 @@ Route::prefix('admin')->group(function () {
 Route::prefix('owner')->group(function () {
     Route::get('/login', [OwnerAuthController::class, 'showLoginForm'])->name('owner.login');
     Route::post('/login', [OwnerAuthController::class, 'login']);
+
+    Route::middleware('auth:owner')->group(function () {
+        Route::get('/dashboard', [OwnerController::class, 'dashboard'])->name('owner.dashboard');
+    });
 });
 
