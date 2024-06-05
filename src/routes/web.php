@@ -78,6 +78,7 @@ Route::prefix('admin')->group(function () {
 Route::prefix('owner')->group(function () {
     Route::get('/login', [OwnerAuthController::class, 'showLoginForm'])->name('owner.login');
     Route::post('/login', [OwnerAuthController::class, 'login']);
+    Route::post('/logout', [OwnerAuthController::class, 'logout'])->name('owner.logout');
 
     Route::middleware('auth:owner')->group(function () {
         Route::get('/dashboard', [OwnerController::class, 'dashboard'])->name('owner.dashboard');
