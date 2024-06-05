@@ -84,6 +84,8 @@ Route::prefix('owner')->group(function () {
         Route::get('/dashboard', [OwnerController::class, 'dashboard'])->name('owner.dashboard');
         Route::get('/shops/create', [OwnerController::class, 'create'])->name('owner.shops.create');
         Route::post('/shops', [OwnerController::class, 'store'])->name('owner.shops.store');
+        Route::get('/shops/{shop}/edit', [OwnerController::class, 'edit'])->name('owner.shops.edit');
+        Route::put('/shops/{shop}', [OwnerController::class, 'update'])->name('owner.shops.update');
     });
 });
 
