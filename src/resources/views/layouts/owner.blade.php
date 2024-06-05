@@ -16,13 +16,13 @@
             <label for="drawer" class="close"></label>
             <nav class="menu">
                 <ul>
-                    <li><a href="">Dashboard</a></li>
-                    <li><a href="">Reservations</a></li>
-                    <li><a href="">Update Store Info</a></li>
-                    <li><a href="">Send Mail</a></li>
-                    <li><a href="">Scan QR</a></li>
+                    <li><a href="{{ route('owner.dashboard') }}">Dashboard</a></li>
+                    <li><a href="{{ route('owner.reservations.index') }}">Reservations</a></li>
+                    <li><a href="{{ route('owner.shops.edit', Auth::guard('owner')->user()->shops->first()->id ?? '') }}">Update Store Info</a></li>
+                    <li><a href="{{ route('owner.send_mail') }}">Send Mail</a></li>
+                    <li><a href="{{ route('owner.qr_scan') }}">Scan QR</a></li>
                     <li>
-                        <form class="logout" action="" method="post">
+                        <form class="logout" action="{{ route('owner.logout') }}" method="post">
                             @csrf
                             <button type="submit">Logout</button>
                         </form>
