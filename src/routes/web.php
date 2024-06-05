@@ -6,6 +6,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\OwnerAuthController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -71,5 +73,10 @@ Route::prefix('admin')->group(function () {
         Route::post('/owners', [AdminAuthController::class, 'storeOwner'])->name('admin.owners.store');
         Route::get('/owners/done', [AdminAuthController::class, 'showOwnerCreationDonePage'])->name('admin.owners.done');
     });
+});
+
+Route::prefix('owner')->group(function () {
+    Route::get('/login', [OwnerAuthController::class, 'showLoginForm'])->name('owner.login');
+    Route::post('/login', [OwnerAuthController::class, 'login']);
 });
 
