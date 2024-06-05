@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Shop;
+use App\Models\Owner;
 
 class ShopSeeder extends Seeder
 {
@@ -14,6 +15,8 @@ class ShopSeeder extends Seeder
      */
     public function run()
     {
+        $owners = Owner::all();
+
         $shops = [
             [
                 'name' => '仙人',
@@ -157,8 +160,15 @@ class ShopSeeder extends Seeder
             ],
         ];
 
-        foreach ($shops as $shop) {
-            Shop::create($shop);
+        $ownerCount = 0;
+
+        foreach ($shops as $index => $shopData) {
+            $shopData['owner_id'] = $owners[$ownerCount]->id;
+            Shop::create($shopData);
+
+            if (($index + 1) % 2 == 0) {
+                $ownerCount++;
+            }
         }
     }
 }
