@@ -82,6 +82,8 @@ Route::prefix('owner')->group(function () {
 
     Route::middleware('auth:owner')->group(function () {
         Route::get('/dashboard', [OwnerController::class, 'dashboard'])->name('owner.dashboard');
+        Route::get('/shops/create', [OwnerController::class, 'create'])->name('owner.shops.create');
+        Route::post('/shops', [OwnerController::class, 'store'])->name('owner.shops.store');
     });
 });
 
