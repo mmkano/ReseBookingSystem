@@ -1,0 +1,88 @@
+.mail-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 50px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 100px;
+}
+
+.mail-container h1 {
+    font-size: 24px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.mail-container form div {
+    margin-bottom: 40px;
+}
+
+.mail-container label {
+    margin-top: -25px;
+    font-weight: bold;
+    position: absolute;
+}
+
+.mail-container input[type="text"],
+.mail-container input[type="url"],
+.mail-container textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.mail-container textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+.mail-container button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #69b792;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.mail-container button:hover {
+    background-color: #ababab;
+}
+
+@media (max-width: 768px) {
+    .mail-container {
+        padding: 20px;
+        width: 80%;
+        margin: 20px auto;
+    }
+
+    form{
+        margin: 30px;
+    }
+
+    .mail-container h1 {
+        font-size: 20px;
+    }
+
+    .mail-container label {
+        font-size: 14px;
+    }
+
+    .mail-container input[type="text"],
+    .mail-container input[type="url"],
+    .mail-container textarea {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .mail-container button {
+        padding: 8px;
+        font-size: 14px;
+    }
+}

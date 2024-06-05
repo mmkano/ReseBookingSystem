@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rese店舗代表者ログイン</title>
+    <link rel="stylesheet" href="{{ asset('css/sanitize.css')}}">
     <link rel="stylesheet" href="{{ asset('css/owner/login.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
