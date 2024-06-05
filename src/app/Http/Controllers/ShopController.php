@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Shop;
+use App\Models\Review;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
 
@@ -138,5 +139,24 @@ class ShopController extends Controller
     ]);
 
     return redirect()->route('shop_detail', ['id' => $request->shop_id])->with('success', '予約が完了しました。');
+    }
+
+    public function addReview(Request $request, $id)
+    {
+        $request->validate([
+            'rating' => 'required|integer|min:1|max:5',
+            'comment' => 'nullable|string'
+        ]);
+
+        $shop = Shop::findOrFail($id);
+
+        Review::create([
+            'shop_id' => $shop->id,
+            'user_id' => Auth::id(),
+            'rating' => $request->rating,
+            'comment' => $request->comment
+        ]);
+
+        return redirect()->route('shop_detail', ['id' => $shop->id])->with('success', 'レビューを追加しました');
     }
 }
