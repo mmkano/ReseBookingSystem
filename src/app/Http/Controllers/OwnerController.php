@@ -104,5 +104,30 @@ class OwnerController extends Controller
         return view('owner.reservations.show', compact('reservation', 'shop'));
     }
 
+    public function showScanPage()
+    {
+        $owner = Auth::guard('owner')->user();
+        $shop = $owner->shops()->first();
+
+        return view('owner.scan', compact('shop'));
+    }
+
+    public function scanQrCode(Request $request)
+    {
+        $request->validate([
+            'qr_code' => 'required|url',
+        ]);
+
+        $url = $request->input('qr_code');
+        $reservationId = basename($url);
+        $reservation = Reservation::find($reservationId);
+
+        if ($reservation) {
+            $shop = $reservation->shop;
+            return view('owner.reservations.show', compact('reservation', 'shop'));
+        } else {
+            return redirect()->back()->with('error', 'Invalid QR code or reservation not found.');
+        }
+    }
 
 }

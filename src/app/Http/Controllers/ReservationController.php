@@ -85,4 +85,12 @@ class ReservationController extends Controller
     {
         return view('reservation_edit_done');
     }
+
+    public function show($id)
+    {
+        $reservation = Reservation::findOrFail($id);
+        $qrCode = QrCode::size(100)->generate(route('owner.reservations.show', $reservation->id));
+
+        return view('owner.reservations.show', compact('reservation', 'qrCode'));
+    }
 }
