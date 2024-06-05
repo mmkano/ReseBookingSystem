@@ -1,6 +1,13 @@
 version: '3.8'
 
 services:
+    mailhog:
+        image: mailhog/mailhog
+        ports:
+            - "8025:8025"
+            - "1025:1025"
+        container_name: resebookingsystem-mailhog-1
+
     nginx:
         image: nginx:1.21.1
         ports:

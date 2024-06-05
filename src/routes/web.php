@@ -28,6 +28,7 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('/login', 'showLoginForm')->name('login');
     Route::post('/login', 'login');
     Route::post('/logout', 'logout')->name('logout');
+    Route::get('/verify', 'verify')->name('verify');
 });
 
 Route::get('/mypage', [UserController::class, 'mypage'])->name('mypage');
