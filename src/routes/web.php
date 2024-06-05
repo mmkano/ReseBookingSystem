@@ -41,6 +41,9 @@ Route::controller(ShopController::class)->group(function () {
     Route::post('/unfavorite-ajax/{id}', 'unfavoriteAjax')->name('unfavorite.ajax');
     Route::get('/shop_detail/{id}', 'show')->name('shop_detail');
 });
+Route::middleware(['auth'])->group(function () {
+    Route::post('/shop_detail/{id}/review', [ShopController::class, 'addReview'])->name('shop.addReview');
+});
 
 Route::controller(ReservationController::class)->group(function () {
     Route::post('/reserve', 'store')->name('reserve');
@@ -49,4 +52,9 @@ Route::controller(ReservationController::class)->group(function () {
     Route::get('/reservation/edit/{id}', 'edit')->name('reservation.edit');
     Route::put('/reservation/update/{id}', 'update')->name('reservation.update');
     Route::get('/reservation/edit_done', 'showEditDonePage')->name('reservation.edit_done');
+});
+
+Route::controller(ReviewController::class)->group(function () {
+    Route::post('/review', 'store')->name('review.store');
+    Route::get('/shop/{id}', 'show')->name('shop.show');
 });
