@@ -34,7 +34,7 @@ class OwnerController extends Controller
             'location' => 'required|string|max:255',
             'genre' => 'required|string|max:255',
             'description' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
         ]);
 
 
@@ -66,7 +66,7 @@ class OwnerController extends Controller
             'location' => 'required|string|max:255',
             'genre' => 'required|string|max:255',
             'description' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:5000',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
         ]);
 
         if ($request->hasFile('image')) {
