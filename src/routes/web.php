@@ -64,6 +64,7 @@ Route::controller(ReviewController::class)->group(function () {
 Route::prefix('admin')->group(function () {
     Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
     Route::post('/login', [AdminAuthController::class, 'login']);
+    Route::post('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 
     Route::middleware('auth:admin')->group(function () {
         Route::get('/owners/create', [AdminAuthController::class, 'showCreateOwnerForm'])->name('admin.owners.create');

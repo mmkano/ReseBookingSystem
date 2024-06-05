@@ -30,4 +30,10 @@ class AdminAuthController extends Controller
     {
         return view('admin.create_owner');
     }
+
+    public function logout()
+    {
+        Auth::guard('admin')->logout();
+        return redirect('/admin/login');
+    }
 }
