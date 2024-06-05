@@ -56,6 +56,7 @@ Route::controller(ReservationController::class)->group(function () {
     Route::get('/reservation/edit/{id}', 'edit')->name('reservation.edit');
     Route::put('/reservation/update/{id}', 'update')->name('reservation.update');
     Route::get('/reservation/edit_done', 'showEditDonePage')->name('reservation.edit_done');
+    Route::get('/reservation/{id}', 'show')->name('reservation.show');
 });
 
 Route::controller(ReviewController::class)->group(function () {
@@ -88,6 +89,8 @@ Route::prefix('owner')->group(function () {
         Route::put('/shops/{shop}', [OwnerController::class, 'update'])->name('owner.shops.update');
         Route::get('/reservations', [OwnerController::class, 'reservations'])->name('owner.reservations.index');
         Route::get('/reservations/{reservation}', [OwnerController::class, 'showReservation'])->name('owner.reservations.show');
+        Route::get('/owner/qr-scan', [OwnerController::class, 'showScanPage'])->name('owner.qr_scan');
+        Route::post('/owner/scan', [OwnerController::class, 'scanQrCode'])->name('owner.scan.post');
     });
 });
 
