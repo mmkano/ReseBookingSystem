@@ -33,7 +33,7 @@ class ShopController extends Controller
         $shops = $query->get();
         $areas = Shop::select('location')->distinct()->get();
         $genres = Shop::select('genre')->distinct()->get();
-        $favorites = auth()->user() ? auth()->user()->favorites->pluck('shop_id')->toArray() : [];
+        $favorites = auth()->user() ? auth()->user()->favorites->pluck('id')->toArray() : [];
 
         return view('shop_list', compact('shops', 'favorites', 'areas', 'genres', 'search'));
     }

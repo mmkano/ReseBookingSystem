@@ -9,7 +9,6 @@
     <script src="{{ asset('js/favorites.js') }}" defer></script>
 </head>
 <body>
-
     <header class="header">
         <div class="main__header">
             <div class="header__inner">
@@ -79,21 +78,12 @@
                             <p>#{{ $shop->location }} #{{ $shop->genre }}</p>
                             <div class="one">
                                 <a href="{{ route('shop_detail', ['id' => $shop->id]) }}" class="detail-btn">詳しくみる</a>
-                                @if(in_array($shop->id, $favorites))
-                                    <form action="{{ route('unfavorite.ajax', ['id' => $shop->id]) }}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="like-btn liked">
-                                            <i class="fas fa-heart"></i>
-                                        </button>
-                                    </form>
-                                @else
-                                    <form action="{{ route('favorite.ajax', ['id' => $shop->id]) }}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="like-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </button>
-                                    </form>
-                                @endif
+                                <form action="{{ auth()->user()->favorites->contains($shop) ? route('unfavorite.ajax', ['id' => $shop->id]) : route('favorite.ajax', ['id' => $shop->id]) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="like-btn {{ auth()->user()->favorites->contains($shop) ? 'liked' : '' }}">
+                                        <i class="fas fa-heart"></i>
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -101,6 +91,5 @@
             </div>
         </div>
     </main>
-
 </body>
 </html>
