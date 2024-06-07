@@ -11,9 +11,9 @@
 <div class="rese__content">
     <div class="message-box">
         <p>店舗代表者の作成が完了しました</p>
-        <form class="logout-form" action="{{ route('admin.logout') }}" method="post">
+        <form class="logout-form" action="{{ route('admin.owners.create') }}" method="get">
             @csrf
-            <button type="submit" class="btn btn-primary">ログアウト</button>
+            <button type="submit" class="btn btn-primary">戻る</button>
         </form>
     </div>
 </div>
