@@ -95,13 +95,13 @@
                 <h2>評価:
                     @if($averageRating)
                         @for ($i = 1; $i <= 5; $i++)
-                        @if ($i <= round($averageRating))
+                        @if ($i <= floor($averageRating))
                                 <span class="fa fa-star checked"></span>
                             @else
                                 <span class="fa fa-star"></span>
                             @endif
                         @endfor
-                        ({{ round($averageRating, 1) }} / 5)
+                        ({{ floor($averageRating) }} / 5)
                     @else
                         <span>評価なし</span>
                     @endif
@@ -112,7 +112,7 @@
             <div class="review-list">
                 @foreach($reviews as $review)
                     <div class="review">
-                        <p>{{ $review->user->name }}: 
+                        <p>{{ $review->user->name }}:
                             @for ($i = 1; $i <= 5; $i++)
                             @if ($i <= $review->rating)
                                     <span class="fa fa-star checked"></span>
@@ -133,9 +133,6 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="reviewModalLabel">レビューを追加</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
                     <form action="{{ route('shop.addReview', ['id' => $shop->id]) }}" method="POST">
                         @csrf
@@ -143,16 +140,16 @@
                             <div class="form-group">
                                 <label for="rating">評価</label>
                                 <div id="rating" class="star-rating">
-                                    <input type="radio" name="rating" value="5" id="5-stars" required>
-                                    <label for="5-stars" class="star">&#9733;</label>
-                                    <input type="radio" name="rating" value="4" id="4-stars">
-                                    <label for="4-stars" class="star">&#9733;</label>
-                                    <input type="radio" name="rating" value="3" id="3-stars">
-                                    <label for="3-stars" class="star">&#9733;</label>
+                                    <input type="radio" name="rating" value="1" id="1-stars" required>
+                                    <label for="1-stars" class="star">&#9733;</label>
                                     <input type="radio" name="rating" value="2" id="2-stars">
                                     <label for="2-stars" class="star">&#9733;</label>
-                                    <input type="radio" name="rating" value="1" id="1-star">
-                                    <label for="1-star" class="star">&#9733;</label>
+                                    <input type="radio" name="rating" value="3" id="3-stars">
+                                    <label for="3-stars" class="star">&#9733;</label>
+                                    <input type="radio" name="rating" value="4" id="4-stars">
+                                    <label for="4-stars" class="star">&#9733;</label>
+                                    <input type="radio" name="rating" value="5" id="5-star">
+                                    <label for="5-star" class="star">&#9733;</label>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -182,25 +179,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     stars.forEach((star, index) => {
         star.addEventListener('click', function() {
-            const rating = star.previousElementSibling.value;
-            starInputs.forEach(input => input.checked = false);
-            star.previousElementSibling.checked = true;
-            stars.forEach((s, i) => {
-                s.style.color = i < rating ? '#f5b301' : '#ddd';
+            const rating = index + 1;
+            starInputs.forEach((input, i) => {
+                input.checked = i === index;
+                stars[i].style.color = i <= index ? '#f5b301' : '#ddd';
             });
         });
 
         star.addEventListener('mouseover', function() {
-            stars.forEach(s => s.style.color = '#ddd');
-            for (let i = 0; i <= index; i++) {
-                stars[i].style.color = '#f5b301';
-            }
+            stars.forEach((s, i) => {
+                s.style.color = i <= index ? '#f5b301' : '#ddd';
+            });
         });
 
         star.addEventListener('mouseout', function() {
             const checkedStar = document.querySelector('.star-rating input[type="radio"]:checked');
             if (checkedStar) {
-                const checkedIndex = Array.from(stars).indexOf(checkedStar.nextElementSibling);
+                const checkedIndex = Array.from(starInputs).indexOf(checkedStar);
                 stars.forEach((s, i) => {
                     s.style.color = i <= checkedIndex ? '#f5b301' : '#ddd';
                 });
@@ -210,10 +205,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    starInputs.forEach((input, index) => {
+    starInputs.forEach((input) => {
         input.addEventListener('change', function() {
+            const rating = parseInt(input.value);
             stars.forEach((star, i) => {
-                star.style.color = i < input.value ? '#f5b301' : '#ddd';
+                star.style.color = i < rating ? '#f5b301' : '#ddd';
             });
         });
     });
