@@ -23,10 +23,7 @@
         @endif
         <form action="{{ route('payment.process') }}" method="POST" id="payment-form">
             @csrf
-            <div class="form-group">
-                <label for="amount">金額</label>
-                <input type="number" class="form-control" id="amount" name="amount" min="1" required>
-            </div>
+            <input type="hidden" id="amount" name="amount" value="1000">
             <div class="form-group">
                 <label for="card-number">カード番号</label>
                 <div id="card-number" class="form-control"></div>
