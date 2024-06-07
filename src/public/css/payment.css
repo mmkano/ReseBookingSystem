@@ -32,7 +32,7 @@ input.form-control, #card-number, #card-expiry, #card-cvc {
     box-sizing: border-box;
 }
 
-button {
+.btn-primary {
     width: 100%;
     padding: 10px;
     background-color: #305dff !important;
@@ -78,7 +78,7 @@ button {
 
     .form-group label {
         font-size: 14px;
-        margin-top: -15px;
+        margin-top: -20px;
     }
 
     input.form-control, #card-number, #card-expiry, #card-cvc {

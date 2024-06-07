@@ -132,14 +132,6 @@ label {
     padding: 10px;
 }
 
-.logout button{
-    border: none;
-    background: none;
-    color: #305dff;
-    font-size: 30px;
-    padding: 10px;
-}
-
 .logo {
     text-decoration: none;
     font-size: 30px;
