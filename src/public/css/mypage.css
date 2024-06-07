@@ -82,7 +82,6 @@
 .favorite-cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 20px;
 }
 
@@ -202,8 +201,13 @@
         margin-left: 40px;
     }
 
-    .favorite-card {
+    .favorites h1, h2{
+        margin-left: 40px;
+    }
+
+    .favorite-cards {
         width: 100%;
+        margin-left: 40px;
     }
 
 }
