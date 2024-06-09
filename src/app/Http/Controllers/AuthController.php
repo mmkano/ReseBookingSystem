@@ -25,7 +25,7 @@ class AuthController extends Controller
         $token = sha1($user->email);
         Mail::send('emails.verify', ['user' => $user, 'token' => $token], function($message) use ($user) {
             $message->to($user->email);
-            $message->subject('メールアドレス確認');
+            $message->subject('本人確認メール');
         });
 
         return view('auth.email_sent');
