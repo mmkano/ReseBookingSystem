@@ -20,7 +20,7 @@
                 <ul>
                     <li><a href="{{ route('admin.login') }}">Login</a></li>
                     <li>
-                    <form class="logout" action="" method="post">
+                    <form class="logout" action="{{ route('admin.logout') }}" method="post">
                         @csrf
                         <button type="submit">Logout</button>
                     </form>

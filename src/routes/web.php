@@ -67,37 +67,45 @@ Route::controller(ReviewController::class)->group(function () {
 });
 
 Route::prefix('admin')->group(function () {
-    Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
-    Route::post('/login', [AdminAuthController::class, 'login']);
-    Route::post('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+    Route::controller(AdminAuthController::class)->group(function () {
+        Route::get('/login', 'showLoginForm')->name('admin.login');
+        Route::post('/login', 'login');
+        Route::post('/logout', 'logout')->name('admin.logout');
 
-    Route::middleware('auth:admin')->group(function () {
-        Route::get('/owners/create', [AdminAuthController::class, 'showCreateOwnerForm'])->name('admin.owners.create');
-        Route::post('/owners', [AdminAuthController::class, 'storeOwner'])->name('admin.owners.store');
-        Route::get('/owners/done', [AdminAuthController::class, 'showOwnerCreationDonePage'])->name('admin.owners.done');
+        Route::middleware('auth:admin')->group(function () {
+            Route::get('/owners/create', 'showCreateOwnerForm')->name('admin.owners.create');
+            Route::post('/owners', 'storeOwner')->name('admin.owners.store');
+            Route::get('/owners/done', 'showOwnerCreationDonePage')->name('admin.owners.done');
+        });
     });
 });
 
 Route::prefix('owner')->group(function () {
-    Route::get('/login', [OwnerAuthController::class, 'showLoginForm'])->name('owner.login');
-    Route::post('/login', [OwnerAuthController::class, 'login']);
-    Route::post('/logout', [OwnerAuthController::class, 'logout'])->name('owner.logout');
+    Route::controller(OwnerAuthController::class)->group(function () {
+        Route::get('/login', 'showLoginForm')->name('owner.login');
+        Route::post('/login', 'login');
+        Route::post('/logout', 'logout')->name('owner.logout');
+    });
 
     Route::middleware('auth:owner')->group(function () {
-        Route::get('/home', [OwnerController::class, 'dashboard'])->name('owner.dashboard');
-        Route::get('/shops/create', [OwnerController::class, 'create'])->name('owner.shops.create');
-        Route::post('/shops', [OwnerController::class, 'store'])->name('owner.shops.store');
-        Route::get('/shops/{shop}/edit', [OwnerController::class, 'edit'])->name('owner.shops.edit');
-        Route::put('/shops/{shop}', [OwnerController::class, 'update'])->name('owner.shops.update');
-        Route::get('/reservations', [OwnerController::class, 'reservations'])->name('owner.reservations.index');
-        Route::get('/reservations/{reservation}', [OwnerController::class, 'showReservation'])->name('owner.reservations.show');
-        Route::get('/owner/qr-scan', [OwnerController::class, 'showScanPage'])->name('owner.qr_scan');
-        Route::post('/owner/scan', [OwnerController::class, 'scanQrCode'])->name('owner.scan.post');
-        Route::get('/send-mail', [MailController::class, 'showSendMailForm'])->name('owner.send_mail');
-        Route::post('/send-mail', [MailController::class, 'sendMail'])->name('owner.send_mail.post');
+        Route::controller(OwnerController::class)->group(function () {
+            Route::get('/home', 'dashboard')->name('owner.dashboard');
+            Route::get('/shops/create', 'create')->name('owner.shops.create');
+            Route::post('/shops', 'store')->name('owner.shops.store');
+            Route::get('/shops/{shop}/edit', 'edit')->name('owner.shops.edit');
+            Route::put('/shops/{shop}', 'update')->name('owner.shops.update');
+            Route::get('/reservations', 'reservations')->name('owner.reservations.index');
+            Route::get('/reservations/{reservation}', 'showReservation')->name('owner.reservations.show');
+            Route::get('/owner/qr-scan', 'showScanPage')->name('owner.qr_scan');
+            Route::post('/owner/scan', 'scanQrCode')->name('owner.scan.post');
+            Route::get('/send-mail', [MailController::class, 'showSendMailForm'])->name('owner.send_mail');
+            Route::post('/send-mail', [MailController::class, 'sendMail'])->name('owner.send_mail.post');
+        });
     });
 });
 
-Route::get('/payment/{reservation_id}', [PaymentController::class, 'showPaymentForm'])->name('payment.form');
-Route::post('/payment/process', [PaymentController::class, 'processPayment'])->name('payment.process');
-Route::get('/payment/confirm', [PaymentController::class, 'confirmPayment'])->name('payment.confirm');
+Route::controller(PaymentController::class)->group(function () {
+    Route::get('/payment/{reservation_id}', 'showPaymentForm')->name('payment.form');
+    Route::post('/payment/process', 'processPayment')->name('payment.process');
+    Route::get('/payment/confirm', 'confirmPayment')->name('payment.confirm');
+});

@@ -36,5 +36,4 @@ class OwnerAuthController extends Controller
         Auth::guard('owner')->logout();
         return redirect('/owner/login');
     }
-
 }

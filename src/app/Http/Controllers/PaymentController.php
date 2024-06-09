@@ -8,7 +8,6 @@ use Stripe\PaymentIntent;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
 
-
 class PaymentController extends Controller
 {
     public function showPaymentForm($reservation_id)
@@ -16,7 +15,7 @@ class PaymentController extends Controller
         $user = Auth::user();
         $reservation = Reservation::findOrFail($reservation_id);
 
-        return view('payment.form', compact('reservation','user'));
+        return view('payment.form', compact('reservation', 'user'));
     }
 
     public function processPayment(Request $request)

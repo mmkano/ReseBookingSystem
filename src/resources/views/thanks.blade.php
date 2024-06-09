@@ -11,7 +11,7 @@
         <div class="message-box">
             <p>会員登録ありがとうございます</p>
             <form action="{{ route('login') }}" method="GET">
-            @csrf
+                @csrf
                 <button>ログインする</button>
             </form>
         </div>

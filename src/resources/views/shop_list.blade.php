@@ -57,10 +57,10 @@
                 </div>
                 <div class="second-line"></div>
                 <div class="search-bar-item">
-                    <form  class="search-form" action="{{ route('shop_list') }}" method="GET">
-                    <button type="submit" class="search-icon">
-                        <i class="fas fa-search"></i>
-                    </button>
+                    <form class="search-form" action="{{ route('shop_list') }}" method="GET">
+                        <button type="submit" class="search-icon">
+                            <i class="fas fa-search"></i>
+                        </button>
                         <input type="text" name="search" placeholder="Search ..." value="{{ request('search') }}">
                     </form>
                 </div>
@@ -77,7 +77,7 @@
                         <div class="card-body">
                             <h3>{{ $shop->name }}</h3>
                             <p>#{{ $shop->location }} #{{ $shop->genre }}</p>
-                            <div class="one">
+                            <div class="action-container">
                                 <a href="{{ route('shop_detail', ['id' => $shop->id]) }}" class="detail-btn">詳しくみる</a>
                                 <form action="{{ auth()->user()->favorites->contains($shop) ? route('unfavorite.ajax', ['id' => $shop->id]) : route('favorite.ajax', ['id' => $shop->id]) }}" method="POST">
                                     @csrf

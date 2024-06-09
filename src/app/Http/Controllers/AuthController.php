@@ -11,11 +11,13 @@ use App\Http\Requests\RegisterRequest;
 
 class AuthController extends Controller
 {
-    public function showRegisterForm(){
+    public function showRegisterForm()
+    {
         return view('auth.register');
     }
 
-    public function register(RegisterRequest $request) {
+    public function register(RegisterRequest $request)
+    {
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -31,11 +33,13 @@ class AuthController extends Controller
         return view('auth.email_sent');
     }
 
-    public function showLoginForm(){
+    public function showLoginForm()
+    {
         return view('auth.login');
     }
 
-    public function login(Request $request) {
+    public function login(Request $request)
+    {
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
@@ -54,7 +58,8 @@ class AuthController extends Controller
         return back()->withErrors(['email' => '提供された認証情報が記録と一致しません。']);
     }
 
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
         Auth::logout();
 
         $request->session()->invalidate();
@@ -64,11 +69,13 @@ class AuthController extends Controller
         return redirect('/login');
     }
 
-    public function showThanksPage(){
+    public function showThanksPage()
+    {
         return view('thanks');
     }
 
-    public function verify(Request $request) {
+    public function verify(Request $request)
+    {
         $user = User::where('email', $request->email)->first();
 
         if ($user && sha1($user->email) == $request->token) {
