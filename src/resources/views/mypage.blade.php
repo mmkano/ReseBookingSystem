@@ -26,6 +26,7 @@
                             <p>Date: {{ $reservation->date }}</p>
                             <p>Time: {{ \Carbon\Carbon::parse($reservation->time)->format('H:i') }}</p>
                             <p>Number: {{ $reservation->number }}人</p>
+                            <p>Payment: {{ $reservation->payment_method == 'onsite' ? '現地決済' : 'カード決済' }}</p>
                             <div class="qr-code">
                                 {!! QrCode::size(100)->generate(route('owner.reservations.show', $reservation->id)) !!}
                             </div>

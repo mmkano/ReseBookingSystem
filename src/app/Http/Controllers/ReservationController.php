@@ -29,6 +29,7 @@ class ReservationController extends Controller
         $reservation->date = $request->input('date');
         $reservation->time = $request->input('time');
         $reservation->number = $request->input('number');
+        $reservation->payment_method = $request->input('payment_method');
         $reservation->save();
 
         if ($request->input('payment_method') == 'card') {

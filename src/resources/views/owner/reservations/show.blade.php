@@ -34,6 +34,10 @@
             <th>人数</th>
             <td>{{ $reservation->number }}</td>
         </tr>
+        <tr>
+            <th>支払い方法</th>
+            <td>{{ $reservation->payment_method == 'onsite' ? '現地決済' : 'カード決済' }}</td>
+        </tr>
     </table>
 </div>
 @endsection

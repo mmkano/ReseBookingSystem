@@ -32,6 +32,7 @@
                             <div class="error">{{ $message }}</div>
                         @enderror
                         <select id="time" name="time">
+                            <option value="">選択してください</option>
                             @foreach ($times as $time)
                                 <option value="{{ $time }}" {{ old('time') == $time ? 'selected' : '' }}>{{ $time }}</option>
                             @endforeach
@@ -40,6 +41,7 @@
                             <div class="error">{{ $message }}</div>
                         @enderror
                         <select id="number" name="number">
+                            <option value="">選択してください</option>
                             @for ($i = 1; $i <= 10; $i++)
                                 <option value="{{ $i }}" {{ old('number') == $i ? 'selected' : '' }}>{{ $i }}人</option>
                             @endfor
@@ -48,6 +50,7 @@
                             <div class="error">{{ $message }}</div>
                         @enderror
                         <select id="payment_method" name="payment_method" onchange="updatePaymentMethod()">
+                            <option value="">選択してください</option>
                             <option value="onsite" {{ old('payment_method') == 'onsite' ? 'selected' : '' }}>現地決済</option>
                             <option value="card" {{ old('payment_method') == 'card' ? 'selected' : '' }}>カード決済</option>
                         </select>
