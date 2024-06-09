@@ -16,7 +16,7 @@
             <label for="drawer" class="close"></label>
             <nav class="menu">
                 <ul>
-                    <li><a href="{{ route('owner.dashboard') }}">Dashboard</a></li>
+                    <li><a href="{{ route('owner.dashboard') }}">Home</a></li>
                     <li><a href="{{ route('owner.reservations.index') }}">Reservations</a></li>
                     <li><a href="{{ route('owner.shops.edit', Auth::guard('owner')->user()->shops->first()->id ?? '') }}">Update Store Info</a></li>
                     <li><a href="{{ route('owner.send_mail') }}">Send Mail</a></li>

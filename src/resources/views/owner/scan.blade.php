@@ -7,15 +7,17 @@
 @endsection
 
 @section('content')
-<h1>QRコードスキャン</h1>
-<div id="video-container">
-    <video id="preview"></video>
+<div class="scan-container">
+    <h1>QRコードスキャン</h1>
+    <div id="video-container">
+        <video id="preview"></video>
+    </div>
+    <form id="scan-form" action="{{ route('owner.scan.post') }}" method="POST">
+        @csrf
+        <input type="hidden" id="qr_code" name="qr_code">
+        <button type="submit" style="display: none;">スキャン</button>
+    </form>
 </div>
-<form id="scan-form" action="{{ route('owner.scan.post') }}" method="POST">
-    @csrf
-    <input type="hidden" id="qr_code" name="qr_code">
-    <button type="submit" style="display: none;">スキャン</button>
-</form>
 @endsection
 
 @section('scripts')

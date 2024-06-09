@@ -63,11 +63,11 @@
 }
 
 .form-group input[type="time"]{
-    width: 1000px;
+    width: 100%;
 }
 
 .form-group input[type="number"]{
-    width: 586px;
+    width: 100%;
 }
 
 .btn {
@@ -94,11 +94,11 @@
 
 @media (max-width: 768px) {
     .rese__content {
-        width: 90%;
         margin-top: 20px;
     }
 
     .container {
+        width: 90%;
         padding: 10px;
     }
 
@@ -117,12 +117,8 @@
         width: 40%;
     }
 
-    .form-group input[type="time"]{
-        width: 80%;
-    }
-
-    .form-group input[type="number"] {
-        width: 95%;
+    .btn{
+        margin-bottom: 20px;
     }
 }
 
