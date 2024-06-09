@@ -37,7 +37,6 @@ class OwnerController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
         ]);
 
-
         $path = $request->file('image')->store('public/shop_images');
 
         $owner = Auth::guard('owner')->user();
@@ -129,5 +128,4 @@ class OwnerController extends Controller
             return redirect()->back()->with('error', 'Invalid QR code or reservation not found.');
         }
     }
-
 }

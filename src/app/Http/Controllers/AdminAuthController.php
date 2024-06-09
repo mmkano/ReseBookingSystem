@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Owner;
 
-
 class AdminAuthController extends Controller
 {
     public function showLoginForm()
@@ -37,7 +36,6 @@ class AdminAuthController extends Controller
         Auth::guard('admin')->logout();
         return redirect('/admin/login');
     }
-
 
     public function storeOwner(Request $request)
     {

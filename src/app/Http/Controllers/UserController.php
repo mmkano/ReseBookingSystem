@@ -13,6 +13,6 @@ class UserController extends Controller
         $reservations = $user->reservations;
         $favorites = $user->favorites;
 
-        return view('mypage', compact('user','reservations','favorites'));
+        return view('mypage', compact('user', 'reservations', 'favorites'));
     }
 }

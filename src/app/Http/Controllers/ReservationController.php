@@ -18,11 +18,13 @@ class ReservationController extends Controller
         return view('shop_detail', compact('shop', 'times'));
     }
 
-    public function showDonePage(){
+    public function showDonePage()
+    {
         return view('done');
     }
 
-    public function store(ReservationRequest $request){
+    public function store(ReservationRequest $request)
+    {
         $reservation = new Reservation();
         $reservation->shop_id = $request->input('shop_id');
         $reservation->user_id = auth()->user()->id;
@@ -41,10 +43,10 @@ class ReservationController extends Controller
 
     public function destroy($id)
     {
-    $reservation = Reservation::findOrFail($id);
-    $reservation->delete();
+        $reservation = Reservation::findOrFail($id);
+        $reservation->delete();
 
-    return redirect()->route('mypage')->with('status', 'Reservation deleted successfully.');
+        return redirect()->route('mypage')->with('status', 'Reservation deleted successfully.');
     }
 
     public function edit($id)

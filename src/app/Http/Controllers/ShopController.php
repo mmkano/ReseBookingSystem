@@ -98,49 +98,49 @@ class ShopController extends Controller
 
     private function generateTimeSlots()
     {
-    $times = [];
-    $start = strtotime('00:00');
-    $end = strtotime('23:30');
+        $times = [];
+        $start = strtotime('00:00');
+        $end = strtotime('23:30');
 
-    while ($start <= $end) {
-        $times[] = date('H:i', $start);
-        $start = strtotime('+30 minutes', $start);
-    }
+        while ($start <= $end) {
+            $times[] = date('H:i', $start);
+            $start = strtotime('+30 minutes', $start);
+        }
 
-    return $times;
+        return $times;
     }
 
     public function store(Request $request)
     {
-    $data = $request->all();
-    session([
-        'shop_id' => $data['shop_id'],
-        'date' => $data['date'],
-        'time' => $data['time'],
-        'number' => $data['number'],
-    ]);
+        $data = $request->all();
+        session([
+            'shop_id' => $data['shop_id'],
+            'date' => $data['date'],
+            'time' => $data['time'],
+            'number' => $data['number'],
+        ]);
 
-    return redirect()->route('shop_detail', ['id' => $data['shop_id']]);
+        return redirect()->route('shop_detail', ['id' => $data['shop_id']]);
     }
 
     public function reserve(Request $request)
     {
-    $request->validate([
-        'shop_id' => 'required|exists:shops,id',
-        'date' => 'required|date',
-        'time' => 'required',
-        'number' => 'required|integer',
-    ]);
+        $request->validate([
+            'shop_id' => 'required|exists:shops,id',
+            'date' => 'required|date',
+            'time' => 'required',
+            'number' => 'required|integer',
+        ]);
 
-    Reservation::create([
-        'shop_id' => $request->shop_id,
-        'user_id' => Auth::id(),
-        'date' => $request->date,
-        'time' => $request->time,
-        'number' => $request->number,
-    ]);
+        Reservation::create([
+            'shop_id' => $request->shop_id,
+            'user_id' => Auth::id(),
+            'date' => $request->date,
+            'time' => $request->time,
+            'number' => $request->number,
+        ]);
 
-    return redirect()->route('shop_detail', ['id' => $request->shop_id])->with('success', '予約が完了しました。');
+        return redirect()->route('shop_detail', ['id' => $request->shop_id])->with('success', '予約が完了しました。');
     }
 
     public function addReview(Request $request, $id)
