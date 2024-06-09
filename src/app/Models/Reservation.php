@@ -15,6 +15,7 @@ class Reservation extends Model
         'date',
         'time',
         'number',
+        'payment_method',
     ];
 
     public function shop()
