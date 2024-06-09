@@ -36,6 +36,7 @@ class ReservationSeeder extends Seeder
                     'date' => Carbon::now()->addDays(rand(1, 30)),
                     'time' => rand(10, 21) . ':00',
                     'number' => rand(1, 10),
+                    'payment_method' => rand(0, 1) ? 'onsite' : 'card',
                 ]);
             }
         }
