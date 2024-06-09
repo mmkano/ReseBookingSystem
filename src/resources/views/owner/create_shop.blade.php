@@ -1,6 +1,6 @@
 @extends('layouts.owner')
 
-@section('title', '新規店舗作成')
+@section('title', '店舗情報作成')
 
 @section('styles')
     <link rel="stylesheet" href="{{ asset('css/owner/create.css') }}">
@@ -8,7 +8,7 @@
 
 @section('content')
 <div class="edit-container">
-    <h1>新規店舗作成</h1>
+    <h1>店舗情報作成</h1>
     <form action="{{ route('owner.shops.store') }}" method="post" enctype="multipart/form-data">
         @csrf
 

@@ -1,6 +1,6 @@
 @extends('layouts.owner')
 
-@section('title', '店舗管理ダッシュボード')
+@section('title', '店舗管理画面')
 
 @section('styles')
     <link rel="stylesheet" href="{{ asset('css/owner/dashboard.css') }}">
