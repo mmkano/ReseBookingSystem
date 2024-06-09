@@ -57,7 +57,7 @@
                 </div>
                 <div class="second-line"></div>
                 <div class="search-bar-item">
-                    <form action="{{ route('shop_list') }}" method="GET">
+                    <form  class="search-form" action="{{ route('shop_list') }}" method="GET">
                     <button type="submit" class="search-icon">
                         <i class="fas fa-search"></i>
                     </button>
