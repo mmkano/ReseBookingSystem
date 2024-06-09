@@ -84,7 +84,7 @@ Route::prefix('owner')->group(function () {
     Route::post('/logout', [OwnerAuthController::class, 'logout'])->name('owner.logout');
 
     Route::middleware('auth:owner')->group(function () {
-        Route::get('/dashboard', [OwnerController::class, 'dashboard'])->name('owner.dashboard');
+        Route::get('/home', [OwnerController::class, 'dashboard'])->name('owner.dashboard');
         Route::get('/shops/create', [OwnerController::class, 'create'])->name('owner.shops.create');
         Route::post('/shops', [OwnerController::class, 'store'])->name('owner.shops.store');
         Route::get('/shops/{shop}/edit', [OwnerController::class, 'edit'])->name('owner.shops.edit');
