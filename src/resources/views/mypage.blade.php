@@ -22,11 +22,11 @@
                             </form>
                         </div>
                         <div class="reservation-body">
-                            <p>Shop: {{ $reservation->shop->name }}</p>
-                            <p>Date: {{ $reservation->date }}</p>
-                            <p>Time: {{ \Carbon\Carbon::parse($reservation->time)->format('H:i') }}</p>
-                            <p>Number: {{ $reservation->number }}人</p>
-                            <p>Payment: {{ $reservation->payment_method == 'onsite' ? '現地決済' : 'カード決済' }}</p>
+                            <p>Shop<span class="shop-space">{{ $reservation->shop->name }}</p>
+                            <p>Date<span class="date-space">{{ $reservation->date }}</p>
+                            <p>Time<span class="time-space">{{ \Carbon\Carbon::parse($reservation->time)->format('H:i') }}</p>
+                            <p>Number<span class="number-space">{{ $reservation->number }}人</p>
+                            <p>Payment<span class="payment-space">{{ $reservation->payment_method == 'onsite' ? '現地決済' : 'カード決済' }}</p>
                             <div class="qr-code">
                                 {!! QrCode::size(100)->generate(route('owner.reservations.show', $reservation->id)) !!}
                             </div>

@@ -255,6 +255,18 @@ main{
     text-decoration: none;
 }
 
+#selected-shop, #selected-date, #selected-time{
+    margin-left: 50px;
+}
+
+#selected-number{
+    margin-left: 30px;
+}
+
+#selected-payment_method{
+    margin-left: 20px;
+}
+
 @media (max-width: 768px) {
     .main {
         flex-direction: column;

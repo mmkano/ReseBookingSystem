@@ -380,13 +380,12 @@ label {
     }
 
     .header__inner {
-        padding-left: 20px;
+        padding-left: 0;
     }
 
     .search-bar {
         width: 95%;
         margin-top: 20px;
-        margin-left: 20px;
     }
 
     .search-bar-item {
