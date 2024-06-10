@@ -58,11 +58,11 @@
                             <div class="error">{{ $message }}</div>
                         @enderror
                         <div class="reservation-summary">
-                            <p>Shop: {{ $shop->name }}</p>
-                            <p>Date: <span id="selected-date">{{ old('date') }}</span></p>
-                            <p>Time: <span id="selected-time">{{ old('time') }}</span></p>
-                            <p>Number: <span id="selected-number">{{ old('number') }}</span></p>
-                            <p>Payment: <span id="selected-payment_method">{{ old('payment_method') }}</span></p>
+                            <p>Shop <span id="selected-shop">{{ $shop->name }}</span></p>
+                            <p>Date <span id="selected-date">{{ old('date') }}</span></p>
+                            <p>Time <span id="selected-time">{{ old('time') }}</span></p>
+                            <p>Number <span id="selected-number">{{ old('number') }}</span></p>
+                            <p>Payment <span id="selected-payment_method">{{ old('payment_method') }}</span></p>
                         </div>
                         <button type="submit">予約する</button>
                     </form>
