@@ -37,7 +37,9 @@ class OwnerController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
         ]);
 
-        $path = $request->file('image')->store('public/shop_images');
+        $path = $request->file('image')->store('shop_images', 's3');
+        Storage::disk('s3')->setVisibility($path, 'public');
+        $url = Storage::disk('s3')->url($path);
 
         $owner = Auth::guard('owner')->user();
         $owner->shops()->create([
@@ -45,7 +47,7 @@ class OwnerController extends Controller
             'location' => $request->location,
             'genre' => $request->genre,
             'description' => $request->description,
-            'image_url' => Storage::url($path),
+            'image_url' => $url,
         ]);
 
         Auth::guard('owner')->logout();
@@ -65,16 +67,17 @@ class OwnerController extends Controller
             'location' => 'required|string|max:255',
             'genre' => 'required|string|max:255',
             'description' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:5120',
         ]);
 
         if ($request->hasFile('image')) {
             if ($shop->image_url) {
-                Storage::delete(str_replace('/storage', 'public', $shop->image_url));
+                Storage::disk('s3')->delete($shop->image_url);
             }
 
-            $path = $request->file('image')->store('public/shop_images');
-            $shop->image_url = Storage::url($path);
+            $path = $request->file('image')->store('shop_images', 's3');
+            Storage::disk('s3')->setVisibility($path, 'public');
+            $shop->image_url = Storage::disk('s3')->url($path);
         }
 
         $shop->name = $request->input('name');
