@@ -1,0 +1,321 @@
+main{
+    height: 83vh;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.rese__content{
+    max-width: 1230px;
+    margin: 0 auto;
+    gap: 50px;
+}
+
+.rese-sub{
+    display: flex;
+}
+
+.shop-ttl{
+    display: flex;
+}
+
+.shop-info {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.shop-info img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.shop-info button.back-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.reservation {
+    flex: 1;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: -40px;
+}
+
+.reservation__inner{
+    padding: 30px;
+    padding-bottom: 0;
+}
+
+.reservation h2 {
+    margin-top: 0;
+}
+
+.reservation input, .reservation select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 4px;
+}
+
+#date{
+    width: 30%;
+}
+
+#time{
+    width: 93%;
+}
+
+#number{
+    width: 93%;
+}
+
+#payment_method{
+    width: 93%;
+}
+.reservation-summary {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    width: 93%;
+}
+
+.reservation-summary p {
+    margin: 5px 0;
+}
+
+.reservation button {
+    width: 111%;
+    padding: 10px;
+    background-color: #0056b3;
+    color: #fff;
+    border: none;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    cursor: pointer;
+    margin-top: 50%;
+    margin-left: -29.5px;
+}
+
+.reservation button:hover {
+    background-color: #004494;
+}
+
+.reviews-info{
+    margin: 50px 0;
+}
+
+.reservation-form,
+.reviews,
+.review-list {
+    margin-bottom: 30px;
+}
+
+.reviews{
+    display: flex;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.review {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.review:last-child {
+    border-bottom: none;
+}
+
+.modal .form-group {
+    margin-bottom: 20px;
+}
+
+.modal .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.modal .form-group select,
+.modal .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    margin: 0 20px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+
+.star-rating {
+    display: flex;
+}
+
+.star-rating input[type="radio"] {
+    display: none;
+}
+
+.star-rating label {
+    font-size: 30px;
+    color: #ddd;
+    cursor: pointer;
+}
+
+.star-rating input[type="radio"]:checked ~ label {
+    color: #f5b301;
+}
+
+.star-rating input[type="radio"]:checked ~ label ~ label {
+    color: #ddd;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: #f5b301;
+}
+
+.star-rating label:hover ~ input ~ label {
+    color: #ddd;
+}
+
+.fa-star.checked {
+    color: #f5b301;
+}
+
+.fa-star {
+    color: #ddd;
+}
+
+.error{
+    margin: -10px 0 10px;
+    font-size: 15px;
+    color: red;
+}
+
+.back-btn{
+    background: white;
+    height: 30px;
+    border-radius: 5px;
+    padding: 0 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.back-btn:hover{
+    text-decoration: none;
+}
+
+#selected-shop, #selected-date, #selected-time{
+    margin-left: 50px;
+}
+
+#selected-number{
+    margin-left: 30px;
+}
+
+#selected-payment_method{
+    margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+    .main {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .rese__content {
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .rese-sub {
+        flex-direction: column;
+    }
+
+    .shop-info,
+    .reservation {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .shop-info img {
+        width: 100%;
+        height: auto;
+    }
+
+    .reservation {
+        margin-top: 0;
+    }
+
+    .favorite-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .favorite-card {
+        width: 90%;
+        max-width: 100%;
+    }
+
+    .reviews h2{
+        font-size: 1.3rem;
+        margin: 0;
+        margin-top: 5px;
+    }
+
+    #date{
+        font-size: 15px;
+    }
+}

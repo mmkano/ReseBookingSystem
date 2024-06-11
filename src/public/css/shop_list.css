@@ -1,0 +1,490 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.main__header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.header {
+    padding: 20px;
+}
+
+.header__inner {
+    max-width: 1230px;
+    padding-left: 100px;
+    display: flex;
+}
+
+#drawer {
+    display: none;
+}
+label {
+    cursor: pointer;
+    position: absolute;
+}
+.open {
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    background: #305dff;
+    transition: background .6s, transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.open::before,
+.open::after {
+    content: "";
+}
+.open span,
+.open::before,
+.open::after {
+    content: "";
+    position: absolute;
+    top: calc(50% - 1px);
+    left: 30%;
+    width: 20px;
+    border-bottom: 2px solid white;
+    transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.open::before {
+    transform: translateY(-8px);
+    width: 10px;
+}
+.open::after {
+    transform: translateY(8px);
+    width: 5px;
+}
+.close {
+    z-index: 1;
+    inset: 0;
+    pointer-events: none;
+    transition: background .6s;
+}
+#drawer:checked + .open {
+    background: #305dff;
+}
+#drawer:checked + .open span {
+    transform: scaleX(0);
+}
+#drawer:checked + .open::before {
+    transform: rotate(135deg) scaleX(1.2);
+    width: 40%;
+}
+#drawer:checked + .open::after {
+    transform: rotate(-135deg) scaleX(1.2);
+    width: 40%;
+}
+#drawer:checked ~ .close {
+    pointer-events: auto;
+    background: rgba(0,0,0,.3);
+}
+
+.menu {
+    z-index: 1;
+    position: fixed;
+    overflow: auto;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 10px;
+    box-sizing: border-box;
+    background:white;
+    transform: translateX(-100%);
+    transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    padding: 15% 0;
+}
+.menu li {
+    line-height: 1.4;
+}
+
+.menu a {
+    display: block;
+    padding: 10px;
+    color: #305dff;
+    text-decoration: inherit;
+    transition: background .6s;
+    font-size: 30px;
+}
+
+.logout button{
+    border: none;
+    background: none;
+    color: #305dff;
+    font-size: 30px;
+    padding: 10px;
+}
+
+#drawer:checked ~ .menu {
+    transform: none;
+}
+
+.logo{
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: bold;
+    color: #305dff;
+    padding-top: 7px;
+    padding-left: 50px;
+}
+
+.rese__content{
+    max-width: 1230px;
+    margin: 0 auto;
+}
+
+
+.main-content {
+    width: 100%;
+    padding-top: 20px;
+}
+
+.search-bar {
+    display: flex;
+    width: 43%;
+    border-radius: 5px;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+    background: white;
+    padding: 5px 0;
+    margin-right: 120px;
+}
+
+.search-bar-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.search-bar select, .search-bar input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #fff;
+}
+
+.search-form{
+    display: flex;
+}
+
+.search-icon{
+    border: none;
+    background: none;
+    padding: 0;
+}
+.search-bar i {
+    color:  #ebebeb;
+}
+
+.custom-select{
+    position: relative;
+}
+
+.first-line {
+    height: 24px;
+    border-left: 1px solid #ebebeb;
+    margin-left: 15px;
+}
+
+.second-line {
+    height: 24px;
+    border-left: 1px solid #ebebeb;
+    margin: 0 10px;
+}
+
+#area, #genre{
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+#area{
+    padding-left: 20px;
+}
+
+.custom-select::after {
+    content: "";
+    position: absolute;
+    left: 80px;
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+    border-top: 8px solid #ebebeb;
+    border-bottom: 0;
+    }
+
+.shop-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.shop-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 10px;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-body h3 {
+    margin: 0;
+}
+
+.card-body p {
+    margin: 10px 0;
+    color: #666;
+}
+
+.detail-btn, .like-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.like-btn {
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    color: grey;
+    font-size: 24px;
+    padding: 0;
+    top: 0;
+    right: 0;
+}
+
+.detail-btn:hover {
+    background-color: #0056b3;
+}
+
+.like-btn:hover i {
+    color: darkred;
+}
+
+.like-btn.liked .fa-heart {
+    color: red;
+
+}
+
+.favorite-cards {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.favorite-card {
+    width: 300px;
+    height: 285px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: calc(25% - 20px);
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.favorite-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 10px;
+    text-align: left;
+}
+
+.card-body h3{
+    margin: 0;
+}
+
+.card-body p{
+    margin: 5px 0;
+    font-size: 13px;
+
+}
+
+.detail-btn{
+    display: block;
+    width: 42%;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.detail-btn:hover {
+    background-color: #0056b3;
+}
+
+.like-btn:hover i {
+    color: darkred;
+}
+
+.fa-heart::before{
+    font-size: 35px;
+}
+
+.action-container{
+    position: relative;
+}
+
+
+.like-btn .fa-heart {
+    color: grey;
+}
+
+.like-btn.liked .fa-heart {
+    color: red;
+}
+
+@media (max-width: 768px) {
+    .main__header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header__inner {
+        padding-left: 0;
+    }
+
+    .search-bar {
+        width: 95%;
+        margin-top: 20px;
+    }
+
+    .search-bar-item {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .open {
+        display: block;
+        z-index: 2;
+        width: 40px;
+        height: 40px;
+        border-radius: 5px;
+        background: #305dff;
+        transition: background .6s, transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .open::before,
+    .open::after {
+        content: "";
+        position: absolute;
+        top: calc(50% - 1px);
+        left: 30%;
+        width: 20px;
+        border-bottom: 2px solid white;
+        transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .open::before {
+        transform: translateY(-8px);
+        width: 10px;
+    }
+
+    .open::after {
+        transform: translateY(8px);
+        width: 5px;
+    }
+
+    #drawer:checked + .open {
+        background: #305dff;
+    }
+
+    #drawer:checked + .open span {
+        transform: scaleX(0);
+    }
+
+    #drawer:checked + .open::before {
+        transform: rotate(135deg) scaleX(1.2);
+        width: 40%;
+    }
+
+    #drawer:checked + .open::after {
+        transform: rotate(-135deg) scaleX(1.2);
+        width: 40%;
+    }
+
+    #drawer:checked ~ .menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        overflow: auto;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 10px;
+        box-sizing: border-box;
+        background: white;
+        transform: none;
+        transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .menu ul {
+        padding: 15% 0;
+    }
+
+    .menu li {
+        margin: 10px 0;
+    }
+
+    .menu a, .logout button {
+        font-size: 24px;
+        padding: 10px;
+    }
+
+    .favorite-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .favorite-card {
+        width: 90%;
+        max-width: 100%;
+    }
+}
