@@ -1,16 +1,16 @@
-.rese__content{
+.rese__content {
     max-width: 1230px;
     margin: 0 auto;
     padding-top: 10px;
-    width: 25%;
+    width: 30%;
     margin-top: 100px;
 }
 
 .message-box {
     background-color: #fff;
     padding: 100px 0 90px;
-    border-radius: 3px;
-    box-shadow:0 4px 16px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
     text-align: center;
 }
 
@@ -23,13 +23,13 @@
 }
 
 .message-box button {
-    background-color:  #305dff;
+    background-color: #305dff;
     color: #fff;
     border: none;
     padding: 5px 15px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 10px;
+    font-size: 16px;
 }
 
 .message-box button:hover {
@@ -38,7 +38,7 @@
 
 @media (max-width: 768px) {
     .rese__content {
-        width: 60%;
+        width: 40%;
     }
 
     .message-box {
@@ -52,6 +52,5 @@
 
     .message-box button {
         font-size: 14px;
-        padding: 10px 20px;
     }
 }

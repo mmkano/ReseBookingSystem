@@ -1,3 +1,10 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2 !important;
+}
+
 .login-box {
     background-color: #ffffff;
     padding: 40px 40px 20px;
@@ -10,7 +17,7 @@
 }
 
 .login-header {
-    background-color: #0066ff;
+    background-color: #305dff;
     color: white;
     padding: 20px;
     border-top-left-radius: 8px;
@@ -26,7 +33,7 @@
 }
 
 .input-group .icon {
-    padding-top: 17px;
+    padding-top: 10px;
     padding-right: 10px;
 }
 
@@ -37,17 +44,17 @@
 
 .input-group input {
     width: 100%;
-    padding-top: 20px;
+    padding: 10px 10px 5px 5px;
     border: none;
-    border-bottom: 1px solid ;
+    border-bottom: 1px solid #575757;
     outline: none;
 }
 
 .btn {
     padding: 5px 15px;
-    font-size: 12px;
+    font-size: 13px;
     color: #ffffff;
-    background-color: #0066ff;
+    background-color: #305dff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -63,12 +70,12 @@
 .login-form__error-message {
     color: red;
     font-size: 12px;
-    margin: -10px 30px 0;
+    margin: -10px 0 10px;
 }
 
 @media (max-width: 768px) {
     .login-box {
-        width: 90%;
+        width: 60%;
         padding: 20px;
     }
 
@@ -76,10 +83,5 @@
         font-size: 18px;
         padding: 15px;
         margin: -20px -20px 15px -20px;
-    }
-
-    .btn {
-        font-size: 14px;
-        padding: 5px 20px;
     }
 }

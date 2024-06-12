@@ -6,23 +6,25 @@ body {
 }
 
 .header {
+    max-width: 1230px;
+    margin: 0 auto;
     display: flex;
     padding: 20px;
 }
 
 .header__inner {
-    max-width: 1230px;
-    padding-left: 100px;
-    display: flex;
+    align-items: center;
+    width: 100%;
 }
 
 #drawer {
     display: none;
 }
+
 label {
     cursor: pointer;
-    position: fixed;
 }
+
 .open {
     z-index: 2;
     width: 40px;
@@ -116,26 +118,38 @@ label {
     font-size: 30px;
 }
 
+.menu a:hover{
+    text-decoration: none;
+}
+
 #drawer:checked ~ .menu {
     transform: none;
 }
 
+.logout button{
+    border: none;
+    background: none;
+    color: #305dff;
+    font-size: 30px;
+    padding: 10px;
+}
+
 .logo {
     text-decoration: none;
-    font-size: 25px;
+    font-size: 30px;
     font-weight: bold;
     color: #305dff;
-    padding-top: 7px;
     padding-left: 50px;
 }
 
 @media (max-width: 768px) {
     .header {
         padding: 20px 5px;
+        padding-left: 0;
     }
 
     .header__inner {
-        padding-left: 10px;
+        padding-left: 25px;
     }
 
     .menu {
@@ -223,4 +237,3 @@ label {
         padding: 10px;
     }
 }
-
