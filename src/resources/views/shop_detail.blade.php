@@ -26,43 +26,45 @@
                     <h2>予約</h2>
                     <form action="{{ route('reserve') }}" method="POST">
                         @csrf
-                        <input type="hidden" name="shop_id" value="{{ $shop->id }}">
-                        <input type="date" id="date" name="date" value="{{ old('date') }}">
-                        @error('date')
-                            <div class="error">{{ $message }}</div>
-                        @enderror
-                        <select id="time" name="time">
-                            <option value="">選択してください</option>
-                            @foreach ($times as $time)
-                                <option value="{{ $time }}" {{ old('time') == $time ? 'selected' : '' }}>{{ $time }}</option>
-                            @endforeach
-                        </select>
-                        @error('time')
-                            <div class="error">{{ $message }}</div>
-                        @enderror
-                        <select id="number" name="number">
-                            <option value="">選択してください</option>
-                            @for ($i = 1; $i <= 10; $i++)
-                                <option value="{{ $i }}" {{ old('number') == $i ? 'selected' : '' }}>{{ $i }}人</option>
-                            @endfor
-                        </select>
-                        @error('number')
-                            <div class="error">{{ $message }}</div>
-                        @enderror
-                        <select id="payment_method" name="payment_method" onchange="updatePaymentMethod()">
-                            <option value="">選択してください</option>
-                            <option value="onsite" {{ old('payment_method') == 'onsite' ? 'selected' : '' }}>現地決済</option>
-                            <option value="card" {{ old('payment_method') == 'card' ? 'selected' : '' }}>カード決済</option>
-                        </select>
-                        @error('payment_method')
-                            <div class="error">{{ $message }}</div>
-                        @enderror
-                        <div class="reservation-summary">
-                            <p>Shop <span id="selected-shop">{{ $shop->name }}</span></p>
-                            <p>Date <span id="selected-date">{{ old('date') }}</span></p>
-                            <p>Time <span id="selected-time">{{ old('time') }}</span></p>
-                            <p>Number <span id="selected-number">{{ old('number') }}</span></p>
-                            <p>Payment <span id="selected-payment_method">{{ old('payment_method') }}</span></p>
+                        <div class="form__inner">
+                            <input type="hidden" name="shop_id" value="{{ $shop->id }}">
+                            <input type="date" id="date" name="date" value="{{ old('date') }}">
+                            @error('date')
+                                <div class="error">{{ $message }}</div>
+                            @enderror
+                            <select id="time" name="time">
+                                <option value="">選択してください</option>
+                                @foreach ($times as $time)
+                                    <option value="{{ $time }}" {{ old('time') == $time ? 'selected' : '' }}>{{ $time }}</option>
+                                @endforeach
+                            </select>
+                            @error('time')
+                                <div class="error">{{ $message }}</div>
+                            @enderror
+                            <select id="number" name="number">
+                                <option value="">選択してください</option>
+                                @for ($i = 1; $i <= 10; $i++)
+                                    <option value="{{ $i }}" {{ old('number') == $i ? 'selected' : '' }}>{{ $i }}人</option>
+                                @endfor
+                            </select>
+                            @error('number')
+                                <div class="error">{{ $message }}</div>
+                            @enderror
+                            <select id="payment_method" name="payment_method" onchange="updatePaymentMethod()">
+                                <option value="">選択してください</option>
+                                <option value="onsite" {{ old('payment_method') == 'onsite' ? 'selected' : '' }}>現地決済</option>
+                                <option value="card" {{ old('payment_method') == 'card' ? 'selected' : '' }}>カード決済</option>
+                            </select>
+                            @error('payment_method')
+                                <div class="error">{{ $message }}</div>
+                            @enderror
+                            <div class="reservation-summary">
+                                <p>Shop <span id="selected-shop">{{ $shop->name }}</span></p>
+                                <p>Date <span id="selected-date">{{ old('date') }}</span></p>
+                                <p>Time <span id="selected-time">{{ old('time') }}</span></p>
+                                <p>Number <span id="selected-number">{{ old('number') }}</span></p>
+                                <p>Payment <span id="selected-payment_method">{{ old('payment_method') }}</span></p>
+                            </div>
                         </div>
                         <button type="submit">予約する</button>
                     </form>

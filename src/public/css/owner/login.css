@@ -2,27 +2,29 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f2f2f2;
+    background-color: #f2f2f2 !important;
 }
 
 .header {
+    max-width: 1230px;
+    margin: 0 auto;
     display: flex;
     padding: 20px;
 }
 
 .header__inner {
-    max-width: 1230px;
-    padding-left: 100px;
-    display: flex;
+    align-items: center;
+    width: 100%;
 }
 
 #drawer {
     display: none;
 }
+
 label {
     cursor: pointer;
-    position: fixed;
 }
+
 .open {
     z-index: 2;
     width: 40px;
@@ -30,6 +32,7 @@ label {
     border-radius: 5px;
     background: #69b792;
     transition: background .6s, transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+    position: absolute;
 }
 .open::before,
 .open::after {
@@ -115,21 +118,32 @@ label {
     font-size: 30px;
 }
 
+.menu a:hover{
+    text-decoration: none;
+}
+
 #drawer:checked ~ .menu {
     transform: none;
 }
 
-.logo{
+.logout button{
+    border: none;
+    background: none;
+    color: #69b792;
+    font-size: 30px;
+    padding: 10px;
+}
+
+.logo {
     text-decoration: none;
-    font-size: 25px;
+    font-size: 30px;
     font-weight: bold;
     color: #69b792;
-    padding-top: 7px;
     padding-left: 50px;
 }
 
-main{
-    height: 83vh;
+.logo:hover{
+    text-decoration: none;
 }
 
 .login-box {
@@ -160,7 +174,7 @@ main{
 }
 
 .input-group .icon {
-    padding-top: 17px;
+    padding-top: 10px;
     padding-right: 10px;
 }
 
@@ -171,21 +185,21 @@ main{
 
 .input-group input {
     width: 100%;
-    padding-top: 20px;
+    padding: 10px 10px 5px 5px;
     border: none;
-    border-bottom: 1px solid ;
+    border-bottom: 1px solid #575757;
     outline: none;
 }
 
 .btn {
     padding: 5px 15px;
-    font-size: 12px;
+    font-size: 13px;
     color: #ffffff;
     background-color: #69b792;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 30px;
     display: block;
     margin-left: auto;
 }
@@ -197,16 +211,17 @@ main{
 .login-form__error-message {
     color: red;
     font-size: 12px;
-    margin: -10px 30px 0;
+    margin: -10px 0 10px;
 }
 
 @media (max-width: 768px) {
     .header {
         padding: 20px 5px;
+        padding-left: 0;
     }
 
     .header__inner {
-        padding-left: 0;
+        padding-left: 25px;
     }
 
     .menu {
@@ -294,8 +309,12 @@ main{
         padding: 10px;
     }
 
+    .logout button {
+        font-size: 24px;
+    }
+
     .login-box {
-        width: 90%;
+        width: 60%;
         padding: 20px;
     }
 
@@ -307,6 +326,5 @@ main{
 
     .btn {
         font-size: 14px;
-        padding: 10px;
     }
 }
