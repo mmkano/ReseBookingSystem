@@ -45,7 +45,7 @@
                             <div class="card-body">
                                 <h3>{{ $favorite->name }}</h3>
                                 <p>#{{ $favorite->location }} #{{ $favorite->genre }}</p>
-                                <div class="one">
+                                <div class="action-container">
                                     <a href="{{ route('shop_detail', ['id' => $favorite->id]) }}" class="detail-btn">詳しくみる</a>
                                     <form action="{{ route('unfavorite', ['id' => $favorite->id]) }}" method="POST">
                                         @csrf

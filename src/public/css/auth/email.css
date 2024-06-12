@@ -1,4 +1,4 @@
-.rese__content{
+.rese__content {
     max-width: 1230px;
     margin: 0 auto;
     padding-top: 10px;
@@ -9,8 +9,8 @@
 .message-box {
     background-color: #fff;
     padding: 100px 20px 70px;
-    border-radius: 3px;
-    box-shadow:0 4px 16px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
     text-align: center;
 }
 
@@ -22,23 +22,9 @@
     top: -20px;
 }
 
-.message-box button {
-    background-color:  #305dff;
-    color: #fff;
-    border: none;
-    padding: 5px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 10px;
-}
-
-.message-box button:hover {
-    background-color: #0056b3;
-}
-
 @media (max-width: 768px) {
     .rese__content {
-        width: 90%;
+        width: 40%;
     }
 
     .message-box {
@@ -49,10 +35,4 @@
         font-size: 18px;
         margin-bottom: 15px;
     }
-
-    .message-box button {
-        font-size: 14px;
-        padding: 10px 20px;
-    }
 }
-

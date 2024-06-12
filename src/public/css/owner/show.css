@@ -48,4 +48,10 @@ h1 {
     .detail-table th, .detail-table td {
         padding: 10px;
     }
+
+    @media (max-width: 425px){
+        .detail-table th, .detail-table td {
+            font-size: 9px;
+        }
+    }
 }
