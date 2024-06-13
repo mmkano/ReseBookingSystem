@@ -9,12 +9,12 @@
 ## アプリケーションURL    
 
 ### AWS（開発環境）  
-* http://57.180.62.59/  
-* mailhog:http://57.180.62.59:8025/  
+* http://57.180.48.130/login
+* mailhog:http://57.180.48.130:8025/  
 
 ### AWS(本番環境）  
-* http://43.207.221.212/  
-* mailhog：http://43.207.221.212:8026/
+* http://3.112.190.91/login
+* mailhog：http://3.112.190.91:8026/
 
 
 ## 機能一覧  
@@ -46,12 +46,16 @@
 
 ## テーブル設計  
 
-
+![スクリーンショット 2024-06-13 9 11 21](https://github.com/mmkano/fashionablylate/assets/155986309/9b03e3af-89e2-40a6-bd55-b4d680862483)
+![スクリーンショット 2024-06-13 9 11 33](https://github.com/mmkano/fashionablylate/assets/155986309/7fa868f9-dc6d-4ff3-ac8f-1795e6a85398)
+![スクリーンショット 2024-06-13 9 11 49](https://github.com/mmkano/fashionablylate/assets/155986309/860289e0-b6f5-4fa6-98a2-18acf3f4c52f)
 
 
 ## ER図  
+![er drawio](https://github.com/mmkano/fashionablylate/assets/155986309/e95cde5c-06fe-4708-8a88-c0c5a37e673d)
 
-
+*ユーザーがお気に入りに追加した店舗との多対多（many-to-many）リレーションシップを定義します。中間テーブル favorites を使用します。
+![er1 drawio](https://github.com/mmkano/fashionablylate/assets/155986309/7553aa8e-5180-4b67-bb6b-8215e357f415)
 
 ## 環境構築  
 
