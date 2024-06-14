@@ -69,7 +69,7 @@ Reseを作成した目的は、企業のグループ会社が外部の飲食店�
 ## 環境構築  
 
 **Dockerビルド**  
-1.`git clone git@github.com:mmkano/AttendanceTracker.git`  
+1.`git clone git@github.com:mmkano/ReseBookingSystem.git`  
 2.DockerDesktopアプリを立ち上げる  
 3.`docker-compose up -d --build`    
 4.「.env.example」ファイルを 「.env」ファイルに命名を変更。または、新しく.envファイルを作成  
