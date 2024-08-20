@@ -57,13 +57,16 @@ Reseを作成した目的は、企業のグループ会社が外部の飲食店�
 
 
 ## テーブル設計  
-![スクリーンショット 2024-06-13 21 46 49](https://github.com/mmkano/AttendanceTracker/assets/155986309/a9999a71-c2c4-4821-ae39-c6ddebc85bd9)
-![スクリーンショット 2024-06-13 21 47 04](https://github.com/mmkano/AttendanceTracker/assets/155986309/ee7441fe-01e1-44a1-a709-393790242a41)
-![スクリーンショット 2024-06-13 21 47 11](https://github.com/mmkano/AttendanceTracker/assets/155986309/be1e3444-4f49-4626-93f8-2cd54a99e3ea)
+<img width="638" alt="スクリーンショット 2024-08-20 15 33 41" src="https://github.com/user-attachments/assets/9ec077d7-813b-4518-954d-9cd183fea1b7">
+<img width="644" alt="スクリーンショット 2024-08-20 15 34 01" src="https://github.com/user-attachments/assets/5e607b3a-1662-4227-ad53-10bcefd23359">
+<img width="639" alt="スクリーンショット 2024-08-20 15 34 15" src="https://github.com/user-attachments/assets/bd752b7c-2230-4a1d-8872-753627cbba19">
+<img width="645" alt="スクリーンショット 2024-08-20 15 34 21" src="https://github.com/user-attachments/assets/679de661-d2c2-45f6-9656-0457115f20b0">
+
+
 
 
 ## ER図  
-![er drawio](https://github.com/mmkano/AttendanceTracker/assets/155986309/0a387c93-1845-4dcc-b21e-771e02fed81d)
+![er drawio](https://github.com/user-attachments/assets/a0307eb7-4d63-4320-bc8e-0ad4bcab796f)
 
 
 ## 環境構築  
@@ -94,6 +97,13 @@ php artisan migrate
 ``` bash
 php artisan db:seed 
 ```     
+
+
+## リマインダー起動コマンド
+``` bash 
+php artisan reminder:send
+
+```   
 
 
 ## 補足事項
