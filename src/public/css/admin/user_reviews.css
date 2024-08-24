@@ -1,0 +1,129 @@
+.user-reviews-container {
+    max-width: 1230px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 90%;
+}
+
+.user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.user-info h3 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.user-actions a {
+    margin-left: 10px;
+}
+
+.btn {
+    padding: 8px 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-danger {
+    background-color: #ff6b6b;
+    color: #ffffff;
+    border: none;
+    white-space: nowrap;
+}
+
+.btn-danger:hover {
+    background-color: #ff5252;
+}
+
+.btn-outline-primary {
+    background-color: transparent;
+    color: #9b51e0;
+    border: 2px solid #9b51e0;
+}
+
+.btn-outline-primary:hover {
+    background-color: #9b51e0;
+    color: #ffffff;
+}
+
+.reviews-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+.reviews-table th, .reviews-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #eeeeee;
+    white-space: nowrap;
+}
+
+.reviews-table th {
+    background-color: #f8f8f8;
+    font-weight: normal;
+}
+
+.reviews-table td img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+    .user-reviews-container {
+        width: 90%;
+    }
+
+    .user-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .user-info h3 {
+        font-size: 20px;
+    }
+
+    .reviews-table {
+        font-size: 12px;
+        display: block;
+        overflow-x: scroll;
+    }
+
+    .reviews-table td img {
+        max-width: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .user-reviews-container {
+        padding: 10px;
+    }
+
+    .user-info h3 {
+        font-size: 18px;
+    }
+
+    .reviews-table {
+        display: block;
+        width: 100%;
+        overflow-x: scroll;
+    }
+
+    .reviews-table th, .reviews-table td {
+        white-space: nowrap;
+    }
+
+    .reviews-table td img {
+        max-width: 100%;
+    }
+}
