@@ -2,27 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Shop;
-use App\Models\Review;
 use App\Models\Reservation;
+use App\Models\Review;
+use App\Models\Shop;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class ShopController extends Controller
 {
     public function index(Request $request)
     {
-        $area = $request->input('area', 'all');
-        $genre = $request->input('genre', 'all');
+        $area = $request->input('area');
+        $genre = $request->input('genre');
         $search = $request->input('search', '');
+        $sort = $request->input('sort');
 
         $query = Shop::query();
 
-        if ($area !== 'all') {
+        if ($area && $area !== 'all') {
             $query->where('location', $area);
         }
 
-        if ($genre !== 'all') {
+        if ($genre && $genre !== 'all') {
             $query->where('genre', $genre);
         }
 
@@ -30,12 +33,26 @@ class ShopController extends Controller
             $query->where('name', 'like', '%' . $search . '%');
         }
 
+        if ($sort === 'rating_high') {
+            $query->withAvg('reviews', 'rating')
+                  ->orderByRaw('COALESCE(reviews_avg_rating, 0) DESC, name ASC');
+        } elseif ($sort === 'rating_low') {
+            $query->withAvg('reviews', 'rating')
+                  ->orderByRaw('COALESCE(reviews_avg_rating, 100) ASC, name ASC');
+        } elseif ($sort === 'random') {
+            $query->inRandomOrder();
+        } else {
+            $query->orderBy('id', 'asc');
+            $sort = null;
+        }
+
         $shops = $query->get();
+
         $areas = Shop::select('location')->distinct()->get();
         $genres = Shop::select('genre')->distinct()->get();
-        $favorites = auth()->user() ? auth()->user()->favorites->pluck('id')->toArray() : [];
+        $favorites = auth()->check() ? auth()->user()->favorites->pluck('id')->toArray() : [];
 
-        return view('shop_list', compact('shops', 'favorites', 'areas', 'genres', 'search'));
+        return view('shop_list', compact('shops', 'favorites', 'areas', 'genres', 'search', 'sort'));
     }
 
     public function favoriteAjax($id)
@@ -44,10 +61,16 @@ class ShopController extends Controller
             return response()->json(['status' => 'unauthenticated'], 401);
         }
 
+        $user = Auth::user();
         $shop = Shop::findOrFail($id);
-        Auth::user()->favorites()->attach($shop->id);
 
-        return response()->json(['status' => 'liked']);
+        if ($user->favorites()->where('shop_id', $shop->id)->exists()) {
+            $user->favorites()->detach($shop->id);
+            return response()->json(['status' => 'unliked']);
+        } else {
+            $user->favorites()->attach($shop->id);
+            return response()->json(['status' => 'liked']);
+        }
     }
 
     public function favorite($id)
@@ -92,6 +115,9 @@ class ShopController extends Controller
         $times = $this->generateTimeSlots();
         $reviews = $shop->reviews;
         $averageRating = $reviews->avg('rating');
+        foreach ($reviews as $review) {
+            $review->image_url = $review->image_path ? Storage::disk('s3')->url($review->image_path) : null;
+        }
 
         return view('shop_detail', compact('shop', 'times', 'reviews', 'averageRating'));
     }
