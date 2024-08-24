@@ -1,4 +1,4 @@
-main {
+main{
     height: 83vh;
     display: flex;
     flex-direction: row;
@@ -6,26 +6,26 @@ main {
     width: 100%;
 }
 
-.rese__content {
+.rese__content{
     max-width: 1230px;
     margin: 0 auto;
     gap: 50px;
-    padding: 20px;
 }
 
-.rese-sub {
+.rese-sub{
     display: flex;
 }
 
-.shop-ttl {
+.shop-ttl{
     display: flex;
-    margin-bottom: 5px;
 }
 
 .shop-info {
     flex: 1;
     margin-right: 20px;
-    margin-top: 20px;
+    max-height: 730px;
+    overflow-y: scroll;
+    padding-right: 15px;
 }
 
 .shop-info img {
@@ -41,23 +41,38 @@ main {
     cursor: pointer;
 }
 
+.reviews-info{
+    background-color: #5e7fee;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+}
+
 .reservation {
     flex: 1;
-    background-color: #305dff;
+    background-color: #3f5fec;
     color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-top: -40px;
+    margin-bottom: 10px;
+    position: relative;
+    height: 730px;
+}
+
+.reservation__inner{
+    padding-bottom: 0;
+    height: 730px;
 }
 
 .reservation h2 {
-    margin-top: 0;
-    padding: 30px;
+    margin: 40px;
 }
 
-.form__inner{
-    padding: 30px;
-    padding-top: 0;
+.booking-details{
+    width: 85%;
+    margin: 0 auto;
 }
 
 .reservation input, .reservation select {
@@ -68,20 +83,28 @@ main {
     border-radius: 4px;
 }
 
-#date {
+#date{
     width: 30%;
 }
 
-#time, #number, #payment_method {
+#time{
     width: 93%;
 }
 
+#number{
+    width: 93%;
+}
+
+#payment_method{
+    width: 93%;
+}
 .reservation-summary {
     background-color: rgba(255, 255, 255, 0.2);
     padding: 10px;
     border-radius: 8px;
     margin-top: 10px;
-    width: 93%;
+    width: 85%;
+    margin: 20px auto;
 }
 
 .reservation-summary p {
@@ -91,20 +114,21 @@ main {
 .reservation button {
     width: 100%;
     padding: 10px;
-    background-color: #0056b3;
+    background-color: #183eeb;
     color: #fff;
     border: none;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     cursor: pointer;
-    margin-top: 130px;
+    position: absolute;
+    bottom: -20px;
 }
 
 .reservation button:hover {
     background-color: #004494;
 }
 
-.reviews-info {
+.reviews-info{
     margin: 50px 0;
 }
 
@@ -114,7 +138,7 @@ main {
     margin-bottom: 30px;
 }
 
-.reviews {
+.reviews{
     display: flex;
 }
 
@@ -156,8 +180,25 @@ main {
 .modal .form-group label {
     display: block;
     margin-bottom: 5px;
-    font-weight: bold;
+    font-weight: normal;
     color: #333;
+}
+
+.modal .rating-label{
+    border-bottom: 1px solid #ccc;
+}
+
+.modal .image{
+    border-bottom: 1px solid #ccc;
+}
+
+.image-upload-instructions{
+    background: #f3f3f3;
+    padding: 20px;
+}
+
+.existingImageContainer{
+    margin-bottom: 30px;
 }
 
 .modal .form-group select,
@@ -169,12 +210,31 @@ main {
     font-size: 16px;
 }
 
+.modal-header{
+    border: none !important;
+    margin: 0 auto;
+    font-weight: bold;
+}
+
+label .review{
+    border: none;
+    font-weight: normal;
+}
+
+#removeImageButton{
+    display: block;
+    float: inline-end;
+    margin: 5px 0;
+    padding: 5px;
+    font-size: 12px;
+}
+
 .btn {
     display: inline-block;
     padding: 10px 20px;
     font-size: 16px;
     color: #fff;
-    background-color: #305dff;
+    background-color: #007bff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -184,12 +244,13 @@ main {
 }
 
 .btn-primary {
-    background-color: #305dff !important;
+    background-color: #007bff;
 }
 
 .btn-primary:hover {
     background-color: #0056b3;
 }
+
 
 .star-rating {
     display: flex;
@@ -230,13 +291,13 @@ main {
     color: #ddd;
 }
 
-.error {
+.error{
     margin: -10px 0 10px;
     font-size: 15px;
     color: red;
 }
 
-.back-btn {
+.back-btn{
     background: white;
     height: 30px;
     border-radius: 5px;
@@ -246,24 +307,24 @@ main {
     margin-right: 10px;
 }
 
-.back-btn:hover {
+.back-btn:hover{
     text-decoration: none;
 }
 
-#selected-shop, #selected-date, #selected-time {
+#selected-shop, #selected-date, #selected-time{
     margin-left: 50px;
 }
 
-#selected-number {
+#selected-number{
     margin-left: 30px;
 }
 
-#selected-payment_method {
+#selected-payment_method{
     margin-left: 20px;
 }
 
 @media (max-width: 768px) {
-    main {
+    .main {
         flex-direction: column;
         align-items: center;
         padding: 20px;
@@ -283,6 +344,8 @@ main {
         width: 100%;
         margin-right: 0;
         margin-bottom: 20px;
+        max-height: none;
+        overflow-y: visible;
     }
 
     .shop-info img {
@@ -294,13 +357,77 @@ main {
         margin-top: 0;
     }
 
-    .reviews h2 {
+    .favorite-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .favorite-card {
+        width: 90%;
+        max-width: 100%;
+    }
+
+    .reviews h2{
         font-size: 1.3rem;
         margin: 0;
         margin-top: 5px;
     }
 
-    #date {
+    #date{
         font-size: 15px;
     }
+
+    .reservation button {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+.review-link{
+    text-decoration: underline;
+    color: #000;
+    font-size: 18px;
+}
+
+.review-item {
+    padding: 15px;
+    border-bottom: 2px solid #d8d8d8;
+    margin-bottom: 15px;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.review-rating{
+    font-size: 25px;
+}
+
+.review-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.review-actions ,
+.review-actions button {
+    text-decoration: underline #969696;
+    color: black;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.review-actions a:hover,
+.review-actions button:hover {
+    text-decoration: underline;
+}
+
+.review-item p {
+    font-size: 16px;
+    color: #333;
+    margin-top: 5px;
 }

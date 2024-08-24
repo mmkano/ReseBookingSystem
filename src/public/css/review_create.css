@@ -1,0 +1,307 @@
+.review-container {
+    max-width: 1230px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.review-container h2 {
+    text-align: center;
+    font-size: 37px;
+    margin-bottom: 60px;
+}
+
+.review-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 10%;
+}
+
+.shop-card {
+    flex: 1;
+    text-align: center;
+}
+
+.vertical-line {
+    width: 2px;
+    background-color: #ccc;
+    height: 400px;
+    align-self: center;
+}
+
+.review-form {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin: 15px 0 30px;
+}
+
+#comment {
+    width: 100%;
+    padding: 10px 10px 30px;
+    border: 2px solid #cacaca;
+    background: none;
+    margin-top: 15px;
+}
+
+.char-count {
+    text-align: right;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.image-upload-instructions {
+    margin: 15px 0;
+    font-size: 14px;
+    text-align: center;
+    padding: 50px;
+    background: white;
+}
+
+.custom-file-upload {
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+#file-name {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.favorite-card {
+    width: 90%;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.favorite-card img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 20px;
+    text-align: left;
+}
+
+.card-body h3{
+    margin: 0;
+}
+
+.card-body p{
+    margin: 5px 0;
+    font-size: 13px;
+}
+
+.detail-btn{
+    display: block;
+    width: 45%;
+    background-color: #3f5fec;
+    color: #fff;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.detail-btn:hover {
+    background-color: #0056b3;
+}
+
+.like-btn:hover i {
+    color: darkred;
+}
+
+.fa-heart::before{
+    font-size: 35px;
+}
+
+.action-container{
+    position: relative;
+    margin-top: 15px;
+}
+
+.like-btn {
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    color: grey;
+    font-size: 24px;
+    padding: 0;
+    top: 0;
+    right: 0;
+}
+
+.like-btn .fa-heart {
+    color: grey;
+}
+
+.like-btn.liked .fa-heart {
+    color: red;
+}
+
+.rating, .review, .image{
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.star-rating input[type="radio"] {
+    display: none;
+}
+
+.star-rating label {
+    font-size: 30px;
+    color: #ddd;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.star-rating input[type="radio"]:checked ~ label {
+    color: #3f5fec;
+}
+
+.star-rating input[type="radio"]:checked ~ label ~ label {
+    color: #ddd;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: #3f5fec;
+}
+
+.star-rating label:hover ~ input ~ label {
+    color: #ddd;
+}
+
+.fa-star.checked {
+    color: #3f5fec;
+}
+
+.fa-star {
+    color: #ddd;
+}
+
+.submit-btn {
+    position: relative;
+    right: 60%;
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: white;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.thumb {
+    max-width: 200px;
+    height: auto;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.image-upload-instructions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-upload-instructions input[type="file"] {
+    display: none;
+}
+
+#file-name {
+    font-size: 14px;
+    color: #555;
+}
+
+.error{
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    font-weight: normal;
+    font-size: 15px;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .review-container h2{
+        font-size: 32px;
+    }
+
+    .review-container {
+        max-width: 90%;
+    }
+
+    .review-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .shop-card {
+        max-width: 300px;
+    }
+
+    .vertical-line {
+        display: none;
+    }
+
+    .submit-btn {
+        right: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .review-container h2{
+        font-size: 32px;
+    }
+
+    .review-container {
+        max-width: 95%;
+        padding: 10px;
+    }
+
+    .review-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .shop-card {
+        margin: 0 auto;
+    }
+
+    .vertical-line {
+        display: none;
+    }
+
+    .review-form {
+        max-width: 100%;
+    }
+
+    .submit-btn {
+        right: 0;
+    }
+}
