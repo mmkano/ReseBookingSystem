@@ -1,15 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ShopController;
-use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\OwnerAuthController;
 use App\Http\Controllers\OwnerController;
-use App\Http\Controllers\MailController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,7 +64,10 @@ Route::controller(ReservationController::class)->group(function () {
 });
 
 Route::controller(ReviewController::class)->group(function () {
-    Route::post('/review', 'store')->name('review.store');
+    Route::post('/review/{shopId}', 'store')->name('review.store');
+    Route::get('/shop/{id}/review/create', 'create')->name('review.create');
+    Route::put('/review/{id}', 'update')->name('review.update');
+    Route::delete('/review/{id}', 'destroy')->name('review.destroy');
     Route::get('/shop/{id}', 'show')->name('shop.show');
 });
 
@@ -71,11 +76,22 @@ Route::prefix('admin')->group(function () {
         Route::get('/login', 'showLoginForm')->name('admin.login');
         Route::post('/login', 'login');
         Route::post('/logout', 'logout')->name('admin.logout');
+    });
 
-        Route::middleware('auth:admin')->group(function () {
+    Route::middleware('auth:admin')->group(function () {
+        Route::controller(AdminController::class)->group(function () {
+            Route::get('/dashboard', 'dashboard')->name('admin.dashboard');
+            Route::delete('/reviews/{id}', 'deleteReview')->name('admin.reviews.delete');
             Route::get('/owners/create', 'showCreateOwnerForm')->name('admin.owners.create');
             Route::post('/owners', 'storeOwner')->name('admin.owners.store');
             Route::get('/owners/done', 'showOwnerCreationDonePage')->name('admin.owners.done');
+            Route::get('/users', 'showUsers')->name('admin.users.list');
+            Route::get('/users/{id}/reviews', 'showUserReviews')->name('admin.users.reviews');
+
+            Route::get('/shops/import', function () {
+                return view('admin.import_shops');
+            })->name('admin.shops.import');
+            Route::post('/shops/import', 'importShops')->name('admin.shops.import');
         });
     });
 });
