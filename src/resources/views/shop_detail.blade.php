@@ -38,7 +38,7 @@
                                     data-review-id="{{ $review->id }}"
                                     data-review-rating="{{ $review->rating }}"
                                     data-review-comment="{{ $review->comment }}"
-                                    data-review-image="{{ $review->image_url }}">
+                                    data-review-image="{{ $review->image_path }}">
                                 口コミを編集
                             </button>
                             <button type="button" class="btn btn-link" data-toggle="modal" data-target="#deleteReviewModal" 
