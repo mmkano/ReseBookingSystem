@@ -373,7 +373,7 @@
                 const uploadLabel = document.getElementById('edit-upload-label');
 
                 if (reviewImage && reviewImage !== '') {
-                    imagePreview.src = reviewImage;
+                    imagePreview.src = decodeURIComponent(reviewImage);
                     imagePreview.style.display = 'block';
                     removeImageButton.style.display = 'block';
                     uploadLabel.style.display = 'none';
