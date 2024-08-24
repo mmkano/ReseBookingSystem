@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Shop;
 use App\Models\Reservation;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReservationRequest;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class ReservationController extends Controller
 {
@@ -25,11 +25,21 @@ class ReservationController extends Controller
 
     public function store(ReservationRequest $request)
     {
+        $reservationDate = $request->input('date');
+        $reservationTime = $request->input('time');
+        $reservationDateTime = strtotime($reservationDate . ' ' . $reservationTime);
+
+        $currentDateTime = time();
+
+        if ($reservationDateTime <= $currentDateTime) {
+            return redirect()->back()->withErrors(['time' => '予約時間は現在の時間より後を指定してください。']);
+        }
+
         $reservation = new Reservation();
         $reservation->shop_id = $request->input('shop_id');
         $reservation->user_id = auth()->user()->id;
-        $reservation->date = $request->input('date');
-        $reservation->time = $request->input('time');
+        $reservation->date = $reservationDate;
+        $reservation->time = $reservationTime;
         $reservation->number = $request->input('number');
         $reservation->payment_method = $request->input('payment_method');
         $reservation->save();
@@ -65,9 +75,19 @@ class ReservationController extends Controller
             'number' => 'required|integer',
         ]);
 
+        $reservationDate = $request->date;
+        $reservationTime = $request->time;
+        $reservationDateTime = strtotime($reservationDate . ' ' . $reservationTime);
+
+        $currentDateTime = time();
+
+        if ($reservationDateTime <= $currentDateTime) {
+            return redirect()->back()->withErrors(['time' => '予約時間は現在の時間より後を指定してください。']);
+        }
+
         $reservation = Reservation::findOrFail($id);
-        $reservation->date = $request->date;
-        $reservation->time = $request->time;
+        $reservation->date = $reservationDate;
+        $reservation->time = $reservationTime;
         $reservation->number = $request->number;
         $reservation->save();
 
