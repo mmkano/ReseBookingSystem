@@ -78,14 +78,6 @@ class ReviewController extends Controller
 
         $review = Review::findOrFail($id);
 
-        if ($request->has('delete_image') && $request->delete_image == '1') {
-            if ($review->image_path) {
-                Storage::disk('s3')->delete($review->image_path);
-                Log::info('Image deleted:', ['image_path' => $review->image_path]);
-                $review->image_path = null;
-            }
-        }
-
         if ($request->hasFile('image')) {
             if ($review->image_path) {
                 Storage::disk('s3')->delete($review->image_path);
@@ -93,6 +85,8 @@ class ReviewController extends Controller
             $imagePath = $request->file('image')->store('reviews', 's3');
             Storage::disk('s3')->setVisibility($imagePath, 'public');
             $review->image_path = Storage::disk('s3')->url($imagePath);
+        } elseif ($review->image_path) {
+            $review->image_path = $review->image_path;
         }
 
         $review->rating = $request->rating;
