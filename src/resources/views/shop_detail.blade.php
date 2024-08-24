@@ -372,7 +372,7 @@
                 const removeImageButton = document.getElementById('removeImageButton');
                 const uploadLabel = document.getElementById('edit-upload-label');
 
-                if (reviewImage && reviewImage !== '/storage/') {
+                if (reviewImage && reviewImage !== '') {
                     imagePreview.src = reviewImage;
                     imagePreview.style.display = 'block';
                     removeImageButton.style.display = 'block';
