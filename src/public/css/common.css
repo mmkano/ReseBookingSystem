@@ -9,7 +9,7 @@ body {
     max-width: 1230px;
     margin: 0 auto;
     display: flex;
-    padding: 20px;
+    padding: 20px 0;
 }
 
 .header__inner {
