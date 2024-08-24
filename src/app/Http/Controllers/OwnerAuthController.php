@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Owner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Owner;
 
 class OwnerAuthController extends Controller
 {
