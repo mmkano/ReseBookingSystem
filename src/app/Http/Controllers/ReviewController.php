@@ -85,8 +85,6 @@ class ReviewController extends Controller
             $imagePath = $request->file('image')->store('reviews', 's3');
             Storage::disk('s3')->setVisibility($imagePath, 'public');
             $review->image_path = Storage::disk('s3')->url($imagePath);
-        } elseif ($review->image_path) {
-            $review->image_path = $review->image_path;
         }
 
         $review->rating = $request->rating;
