@@ -30,8 +30,9 @@ class ReviewController extends Controller
         $review->shop_id = $shopId;
 
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('reviews', 'public');
-            $review->image_path = $imagePath;
+            $imagePath = $request->file('image')->store('reviews', 's3');
+            Storage::disk('s3')->setVisibility($imagePath, 'public');
+            $review->image_path = Storage::disk('s3')->url($imagePath);
         }
 
         $review->save();
@@ -79,7 +80,7 @@ class ReviewController extends Controller
 
         if ($request->has('delete_image') && $request->delete_image == '1') {
             if ($review->image_path) {
-                Storage::delete($review->image_path);
+                Storage::disk('s3')->delete($review->image_path);
                 Log::info('Image deleted:', ['image_path' => $review->image_path]);
                 $review->image_path = null;
             }
@@ -87,10 +88,11 @@ class ReviewController extends Controller
 
         if ($request->hasFile('image')) {
             if ($review->image_path) {
-                Storage::disk('public')->delete($review->image_path);
+                Storage::disk('s3')->delete($review->image_path);
             }
-            $imagePath = $request->file('image')->store('reviews', 'public');
-            $review->image_path = $imagePath;
+            $imagePath = $request->file('image')->store('reviews', 's3');
+            Storage::disk('s3')->setVisibility($imagePath, 'public');
+            $review->image_path = Storage::disk('s3')->url($imagePath);
         }
 
         $review->rating = $request->rating;
@@ -112,7 +114,7 @@ class ReviewController extends Controller
         }
 
         if ($review->image_path) {
-            Storage::disk('public')->delete($review->image_path);
+            Storage::disk('s3')->delete($review->image_path);
         }
 
         $review->delete();

@@ -116,7 +116,7 @@ class ShopController extends Controller
         $reviews = $shop->reviews;
         $averageRating = $reviews->avg('rating');
         foreach ($reviews as $review) {
-            $review->image_url = $review->image_path ? Storage::url($review->image_path) : null;
+            $review->image_url = $review->image_path ? Storage::disk('s3')->url($review->image_path) : null;
         }
 
         return view('shop_detail', compact('shop', 'times', 'reviews', 'averageRating'));

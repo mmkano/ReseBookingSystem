@@ -62,7 +62,7 @@
                         </div>
                         <p>{{ $review->comment }}</p>
                         @if ($review->image_path)
-                            <img src="{{ Storage::url($review->image_path) }}" alt="Review Image" style="max-width: 200px;">
+                            <img src="{{ $review->image_path }}" alt="Review Image" style="max-width: 200px;">
                         @endif
                     </div>
                 @endforeach
