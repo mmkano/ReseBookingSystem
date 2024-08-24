@@ -113,8 +113,8 @@ class AdminController extends Controller
             } else {
                 $imageName = Str::random(10) . '.' . $extension;
                 $relativePath = 'shop_images/' . $imageName;
-                Storage::disk('public')->put($relativePath, $imageContents);
-                $imagePath = '/storage/' . $relativePath;
+                Storage::disk('s3')->put($relativePath, $imageContents);
+                $imagePath = Storage::disk('s3')->url($relativePath);
             }
 
             Shop::create([
