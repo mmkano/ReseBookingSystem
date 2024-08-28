@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ImportShopsRequest;
+use App\Http\Requests\ShopDataRequest;
+use App\Http\Requests\StoreOwnerRequest;
 use App\Models\Owner;
 use App\Models\Review;
 use App\Models\Shop;

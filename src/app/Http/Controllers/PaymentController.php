@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProcessPaymentRequest;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,13 +19,8 @@ class PaymentController extends Controller
         return view('payment.form', compact('reservation', 'user'));
     }
 
-    public function processPayment(Request $request)
+    public function processPayment(ProcessPaymentRequest $request)
     {
-        $request->validate([
-            'amount' => 'required|numeric|min:1',
-            'payment_method' => 'required|string',
-        ]);
-
         Stripe::setApiKey(env('STRIPE_SECRET'));
 
         try {

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddReviewRequest;
+use App\Http\Requests\ReserveRequest;
 use App\Models\Reservation;
 use App\Models\Review;
 use App\Models\Shop;
@@ -149,15 +151,8 @@ class ShopController extends Controller
         return redirect()->route('shop_detail', ['id' => $data['shop_id']]);
     }
 
-    public function reserve(Request $request)
+    public function reserve(ReserveRequest $request)
     {
-        $request->validate([
-            'shop_id' => 'required|exists:shops,id',
-            'date' => 'required|date',
-            'time' => 'required',
-            'number' => 'required|integer',
-        ]);
-
         Reservation::create([
             'shop_id' => $request->shop_id,
             'user_id' => Auth::id(),
@@ -169,13 +164,8 @@ class ShopController extends Controller
         return redirect()->route('shop_detail', ['id' => $request->shop_id])->with('success', '予約が完了しました。');
     }
 
-    public function addReview(Request $request, $id)
+    public function addReview(AddReviewRequest $request, $id)
     {
-        $request->validate([
-            'rating' => 'required|integer|min:1|max:5',
-            'comment' => 'nullable|string'
-        ]);
-
         $shop = Shop::findOrFail($id);
 
         Review::create([
