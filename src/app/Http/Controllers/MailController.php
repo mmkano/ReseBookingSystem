@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SendMailRequest;
 use App\Models\Shop;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,13 +19,8 @@ class MailController extends Controller
         return view('owner.send_mail', compact('shop'));
     }
 
-    public function sendMail(Request $request)
+    public function sendMail(SendMailRequest $request)
     {
-        $request->validate([
-            'subject' => 'required|string|max:255',
-            'message' => 'required|string',
-        ]);
-
         $users = User::all();
         $subject = $request->subject;
         $messageBody = $request->message;
