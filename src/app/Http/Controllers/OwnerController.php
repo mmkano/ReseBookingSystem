@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ScanQrCodeRequest;
+use App\Http\Requests\StoreShopRequest;
+use App\Http\Requests\UpdateShopRequest;
 use App\Models\Reservation;
 use App\Models\Shop;
 use Illuminate\Http\Request;
@@ -27,16 +30,8 @@ class OwnerController extends Controller
         return view('owner.create_shop');
     }
 
-    public function store(Request $request)
+    public function store(StoreShopRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'location' => 'required|string|max:255',
-            'genre' => 'required|string|max:255',
-            'description' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
-        ]);
-
         $path = $request->file('image')->store('shop_images', 's3');
         Storage::disk('s3')->setVisibility($path, 'public');
         $url = Storage::disk('s3')->url($path);
@@ -60,16 +55,8 @@ class OwnerController extends Controller
         return view('owner.edit_shop', compact('shop'));
     }
 
-    public function update(Request $request, Shop $shop)
+    public function update(UpdateShopRequest $request, Shop $shop)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'location' => 'required|string|max:255',
-            'genre' => 'required|string|max:255',
-            'description' => 'required|string',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:5120',
-        ]);
-
         if ($request->hasFile('image')) {
             if ($shop->image_url) {
                 Storage::disk('s3')->delete($shop->image_url);
@@ -114,12 +101,8 @@ class OwnerController extends Controller
         return view('owner.scan', compact('shop'));
     }
 
-    public function scanQrCode(Request $request)
+    public function scanQrCode(ScanQrCodeRequest $request)
     {
-        $request->validate([
-            'qr_code' => 'required|url',
-        ]);
-
         $url = $request->input('qr_code');
         $reservationId = basename($url);
         $reservation = Reservation::find($reservationId);
