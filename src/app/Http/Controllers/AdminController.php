@@ -34,14 +34,8 @@ class AdminController extends Controller
         return view('admin.user_reviews', compact('user', 'reviews'));
     }
 
-    public function storeOwner(Request $request)
+    public function storeOwner(StoreOwnerRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:owners',
-            'password' => 'required|string|min:5',
-        ]);
-
         Owner::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -70,12 +64,8 @@ class AdminController extends Controller
         return view('admin.create_owner');
     }
 
-    public function importShops(Request $request)
+    public function importShops(ImportShopsRequest $request)
     {
-        $request->validate([
-            'csv_file' => 'required|file|mimes:csv,txt',
-        ]);
-
         $file = $request->file('csv_file');
         $data = array_map('str_getcsv', file($file->getRealPath()));
 
@@ -90,17 +80,9 @@ class AdminController extends Controller
                 'image_url' => $row[4],
             ];
 
-            $validator = Validator::make($shopData, [
-                'name' => 'required|string|max:50',
-                'location' => 'required|string|in:東京都,大阪府,福岡県',
-                'genre' => 'required|string|in:寿司,焼肉,イタリアン,居酒屋,ラーメン',
-                'description' => 'required|string|max:400',
-                'image_url' => 'required|string|url',
-            ]);
-
-            if ($validator->fails()) {
-                return redirect()->back()->withErrors($validator)->withInput();
-            }
+            $shopDataRequest = new ShopDataRequest();
+            $shopDataRequest->merge($shopData);
+            $shopDataRequest->validate();
 
             $imageUrl = $shopData['image_url'];
             $extension = strtolower(pathinfo($imageUrl, PATHINFO_EXTENSION));
