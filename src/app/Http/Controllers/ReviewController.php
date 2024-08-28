@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreReviewRequest;
+use App\Http\Requests\UpdateReviewRequest;
 use App\Models\Review;
 use App\Models\Shop;
 use Illuminate\Http\Request;
@@ -10,22 +12,11 @@ use Illuminate\Support\Facades\Storage;
 
 class ReviewController extends Controller
 {
-    public function store(Request $request, $shopId)
+    public function store(StoreReviewRequest $request, $shopId)
     {
-        $validatedData = $request->validate([
-            'rating' => ['required', 'integer', 'min:1', 'max:5'],
-            'comment' => ['nullable', 'string', 'max:400'],
-            'image' => ['nullable', 'image', 'mimes:jpeg,png'],
-        ], [
-            'rating.required' => '評価は必須です。',
-            'comment.max' => 'コメントは400文字以内で入力してください。',
-            'image.image' => '画像ファイルのみアップロード可能です。',
-            'image.mimes' => 'アップロード可能な画像形式はjpegとpngのみです。',
-        ]);
-
         $review = new Review();
-        $review->rating = $validatedData['rating'];
-        $review->comment = $validatedData['comment'];
+        $review->rating = $request->rating;
+        $review->comment = $request->comment;
         $review->user_id = auth()->id();
         $review->shop_id = $shopId;
 
@@ -61,20 +52,9 @@ class ReviewController extends Controller
         return view('review_create', compact('shop'));
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateReviewRequest $request, $id)
     {
         Log::info('Review update request received', ['request_data' => $request->all()]);
-
-        $validatedData = $request->validate([
-            'rating' => ['required', 'integer', 'min:1', 'max:5'],
-            'comment' => ['nullable', 'string', 'max:400'],
-            'image' => ['nullable', 'image', 'mimes:jpeg,png'],
-        ], [
-            'rating.required' => '評価は必須です。',
-            'comment.max' => 'コメントは400文字以内で入力してください。',
-            'image.image' => '画像ファイルのみアップロード可能です。',
-            'image.mimes' => 'アップロード可能な画像形式はjpegとpngのみです。',
-        ]);
 
         $review = Review::findOrFail($id);
 
