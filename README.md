@@ -8,7 +8,7 @@ Reseを作成した目的は、企業のグループ会社が外部の飲食店�
 
 ## アプリケーションURL    
 
-### AWS（開発環境）  
+### AWS
 * https://54.238.171.131/login (ユーザーURL)
 * https://54.238.171.131/admin/login (管理者URL)
 * https://54.238.171.131/owner/login (店舗代表者URL)
